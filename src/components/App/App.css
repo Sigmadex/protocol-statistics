@@ -1,8 +1,8 @@
 body {
-    height: 100vh;
+    /* height: 100vh; */
     font-family: 'Work Sans';
     font-weight: 400;
-    background-attachment: fixed;
-    padding-top: 90px;
-    overscroll-behavior: none;
+    /* background-attachment: fixed; */
+    /* padding-top: 90px; */
+    /* overscroll-behavior: none; */
 }

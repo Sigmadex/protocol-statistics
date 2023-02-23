@@ -1,10 +1,13 @@
-import { useContext } from 'react'
-import { AddressContext } from '../../utilities/Auth'
-import { truncateAddress } from '../../utilities/formatting'
+// import { useContext } from 'react'
+// import { AddressContext } from '../../utilities/Auth'
+// import { truncateAddress } from '../../utilities/formatting'
 
 const buttonStyles = {
-  width: '150px',
-  height: '46px',
+  // boxSizing: 'border-box',
+  // mozBoxSizing: 'border-box',
+  // webkitBoxSizing: 'border-box',
+  width: '144px',
+  height: '36px',
   border: '1px solid #404C55',
   borderRadius: '10px',
   backgroundColor: 'transparent',
@@ -26,24 +29,33 @@ const navbarButtonStyles = {
   color: '#ffffff'
 }
 
-export function ConnectButton(connectAccount, navbar) {
-    const walletAddress = useContext(AddressContext)
-
-    return (
-      walletAddress
-        ? navbar
-          ? <span style={{color: '#ffffff'}}>{truncateAddress(walletAddress)}</span>
-          : <button
-              style={{...buttonStyles, cursor: 'not-allowed'}}
-              disabled={true}
-            >
-              Connect Wallet
-            </button>
-        : <button
-            onClick={connectAccount}
-            style={navbar ? navbarButtonStyles: buttonStyles}
-          >
-            Connect Wallet
-          </button>
-    )  
+export function ConnectButton() {
+  return (
+    <button
+      style={buttonStyles}
+    >
+      Connect Wallet
+    </button>
+  )
 }
+// export function ConnectButton(connectAccount, navbar) {
+//     const walletAddress = useContext(AddressContext)
+
+//     return (
+//       walletAddress
+//         ? navbar
+//           ? <span style={{color: '#ffffff'}}>{truncateAddress(walletAddress)}</span>
+//           : <button
+//               style={{...buttonStyles, cursor: 'not-allowed'}}
+//               disabled={true}
+//             >
+//               Connect Wallet
+//             </button>
+//         : <button
+//             onClick={connectAccount}
+//             style={navbar ? navbarButtonStyles: buttonStyles}
+//           >
+//             Connect Wallet
+//           </button>
+//     )  
+// }

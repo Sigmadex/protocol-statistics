@@ -1,17 +1,17 @@
-// import { ConnectButton } from '../ConnectButton'
+import { ConnectButton } from '../ConnectButton'
 import { BrowserRouter as Router, Link } from 'react-router-dom'
 
-// const Logo = () => {
-//   return (
-//     <Link to='/'>
-//       <img
-//         style={{cursor: 'pointer', height: '21px'}}
-//         alt='Sigmadex logo'
-//         src='/images/logo-E-wht.svg'
-//       />
-//     </Link>
-//   )
-// }
+const Logo = () => {
+  return (
+    // <Link to='/'>
+      <img
+        style={{cursor: 'pointer', height: 21}}
+        alt='Sigmadex logo'
+        src='/images/logo-E-dark.svg' 
+      />
+    // </Link>
+  )
+}
 
 const navbarStyles = {
   height: '90px',
@@ -29,32 +29,24 @@ const navbarStyles = {
 
 export function Navbar(connectAccount) {
   return (
-    <div style={navbarStyles}>
-      {/* <Logo />
-      <span>
-        <img alt='AVAX logo' src='/images/avax-logo-white.svg' />
-        <span style={{paddingLeft: '26px'}}>
-          <ConnectButton connectAccount={connectAccount} navbar />
-        </span>
-      </span> */}
-      {/* <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/positons">Positions</Link>
-            </li>
-            <li>
-              <Link to="/governance">Governance</Link>
-            </li>
-          </ul>
-        </nav> */}
-
-        <Link to='/'>Home</Link>
-        <Link to='/positions'>Positions</Link>
-        <Link to='/governance'>Governance</Link>
-
+    <div className="row align-items-center justify-content-around" style={{height: 90}}>
+      <div className='col-lg-1 col-sm-2'>
+        <Logo />
+      </div>
+      <div className="col-lg-9 col-sm-5">
+        <Router>
+          <Link to='/'>Home</Link>
+          <Link to='/positions'>Positions</Link>
+          <Link to='/governance'>Governance</Link>
+        </Router>
+      </div>
+      <div className='col-lg-1 col-sm-5' style={{backgroundColor: 'salmon'}}>
+        <img
+          alt='Avax logo'
+          src='/images/avax-logo-inverse.svg'
+        />
+        <ConnectButton />        
+      </div>
     </div>
-  );
+  )
 }
