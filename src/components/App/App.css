@@ -1,8 +1,28 @@
 body {
-    /* height: 100vh; */
-    font-family: 'Work Sans';
-    font-weight: 400;
-    /* background-attachment: fixed; */
-    /* padding-top: 90px; */
-    /* overscroll-behavior: none; */
+  background-color: #F5F5F5;
+  font-family: 'Work Sans';
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 38;
+  font-weight: bold;
+}
+
+.btn-light {
+  width: 87px;
+  height: 36px;
+  border: '1px solid #404C55';
+  border-radius: 10px;
+  color: #000000;
+  font-family: 'Roboto';
+}
+
+.btn-dark {
+  width: 87px;
+  height: 36px;
+  background-color: #404C55;
+  border-radius: 10px;
+  color: #FFFFFF;
+  font-family: 'Roboto';
 }

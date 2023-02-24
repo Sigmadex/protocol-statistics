@@ -19,12 +19,26 @@ export function Dashboard() {
   }, []) // use walletAddress as parameter
 
   return (
-    <div>
-      <h1>Dashboard</h1>
-      <p>View a global overview of the protocol statistics.</p>
-      <hr />
-      {Object.entries(data).length &&
-        data['totalSDEXStaked']}
+    <div className="row justify-content-center" style={{height: 90}}>
+      <div className="col-lg-9 col-sm-12">
+        <h1>Dashboard</h1>
+        <span>View a global overview of the protocol statistics.</span>
+        <hr />
+        <div className='row'>
+          {Object.entries(dashboardData).map(item => {
+            return (
+              <div className="col-sm-3">
+                <div className="card">
+                  <div className="card-body">
+                    <h5 className="card-title">{item[1]}</h5>
+                    <p className="card-text">{item[0]}</p>
+                  </div>
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      </div>
     </div>
   )
 }

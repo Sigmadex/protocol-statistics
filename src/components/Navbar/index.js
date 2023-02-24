@@ -29,16 +29,14 @@ const navbarStyles = {
 
 export function Navbar(connectAccount) {
   return (
-    <div className="row align-items-center justify-content-around" style={{height: 90}}>
+    <div className="row align-items-center justify-content-around" style={{height: 90, backgroundColor: '#FFFFFF', boxShadow: '0px 4px 25px rgba(64, 76, 85, 0.15)'}}>
       <div className='col-lg-1 col-sm-2'>
         <Logo />
       </div>
       <div className="col-lg-9 col-sm-5">
-        <Router>
-          <Link to='/'>Home</Link>
-          <Link to='/positions'>Positions</Link>
-          <Link to='/governance'>Governance</Link>
-        </Router>
+        <Link to='/'>Home</Link>
+        <Link to='/positions'>Positions</Link>
+        <Link to='/governance'>Governance</Link>
       </div>
       <div className='col-lg-1 col-sm-5' style={{backgroundColor: 'salmon'}}>
         <img

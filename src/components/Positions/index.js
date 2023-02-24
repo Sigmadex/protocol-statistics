@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react'
+import { StakingModal } from '../StakingModal'
+import { PositionTable } from '../PositionTable'
 
 const positionData = {
   mining: [
@@ -36,14 +38,6 @@ const positionData = {
   ]
 }
 
-const StakingModal = () => {
-  return (
-    <div>
-      <h1>Create New Staking Position</h1>
-    </div>
-  )
-}
-
 export function Positions() {
   const [data, setDashboardData] = useState({})
 
@@ -52,11 +46,17 @@ export function Positions() {
   }, []) // use walletAddress as parameter
 
   return (
-    <div>
-      <p>View your active stakes.</p>
-      {Object.entries(data).length &&
-        data['earning'][0]['apy']}
-      <StakingModal />
+    <div className="row justify-content-center" style={{height: 90}}>
+      <div className="col-lg-9 col-sm-12">
+        <h1>Positions</h1>
+        <span>View your active stakes.</span>
+        <div className='row'>
+          <button>Earn APY</button>
+        </div>
+        <hr />
+        <StakingModal />
+        <PositionTable />
+      </div>
     </div>
   )
 }

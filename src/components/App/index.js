@@ -6,22 +6,24 @@ import { Positions } from "../Positions"
 import { Governance } from "../Governance"
 import { Test } from '../Test'
 import { Breadcrumbs } from "../Breadcrumbs";
+import { Admin } from "../Admin";
 import './App.css'
 
 export function App() {
   return (
     <div className="container-fluid" >
-      <Navbar />
-      <Breadcrumbs />
       <Router>
+        <Navbar />
+        <Breadcrumbs />
         <Routes>
           <Route path="/" element={<Dashboard />} />
+          <Route path="/admin" element={<Admin />} />
           <Route path="/positions" element={<Positions />} />
           <Route path="/governance" element={<Governance />} />
           <Route path="/test" element={<Test />} />          
         </Routes>
+        <Footer />
       </Router>
-      <Footer />
     </div>
   )
 }

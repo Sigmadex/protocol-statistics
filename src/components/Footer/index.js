@@ -59,7 +59,7 @@ export function Footer() {
 
   return (
     <div
-      // class={'footer'}
+      // className={'footer'}
       style={footerStyles}
     >
       <div>

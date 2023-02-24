@@ -3,7 +3,7 @@ export function Breadcrumbs() {
 
   return (
     <div className="row justify-content-center" style={{height: 90}}>
-      <div className="col-lg-9 col-sm-5" style={{backgroundColor: 'green'}}>
+      <div className="col-lg-9 col-sm-12">
         Breadcrumbs
       </div>
     </div>
