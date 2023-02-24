@@ -2,6 +2,7 @@ body {
   background-color: #F5F5F5;
   font-family: 'Work Sans';
   font-weight: 400;
+  color: #404C55;
 }
 
 h1 {
@@ -24,5 +25,14 @@ h1 {
   background-color: #404C55;
   border-radius: 10px;
   color: #FFFFFF;
+  font-family: 'Roboto';
+}
+
+.btn-colored {
+  width: 124px;
+  height: 36px;
+  background-color: #E6FCFF;
+  border-radius: 10px;
+  border: none;
   font-family: 'Roboto';
 }

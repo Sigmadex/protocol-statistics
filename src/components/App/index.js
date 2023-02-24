@@ -11,7 +11,7 @@ import './App.css'
 
 export function App() {
   return (
-    <div className="container-fluid" >
+    <div className="container-fluid">
       <Router>
         <Navbar />
         <Breadcrumbs />

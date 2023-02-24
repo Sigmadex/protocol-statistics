@@ -51,11 +51,11 @@ export function Positions() {
         <h1>Positions</h1>
         <span>View your active stakes.</span>
         <div className='row'>
-          <button>Earn APY</button>
+          <button className='btn-colored'>&#8592; Earn APY</button>
         </div>
         <hr />
-        <StakingModal />
-        <PositionTable />
+        {/* <StakingModal /> */}
+        <PositionTable positionData={data} />
       </div>
     </div>
   )
