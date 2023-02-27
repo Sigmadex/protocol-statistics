@@ -54,8 +54,10 @@ export function Positions() {
           <button className='btn-colored'>&#8592; Earn APY</button>
         </div>
         <hr />
-        {/* <StakingModal /> */}
-        <PositionTable positionData={data} />
+        <div className='row justify-content-center'>
+          <StakingModal />
+          {/* <PositionTable positionData={data} /> */}
+        </div>
       </div>
     </div>
   )

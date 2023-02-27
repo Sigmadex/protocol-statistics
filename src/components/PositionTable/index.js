@@ -33,7 +33,7 @@ export function PositionTable({positionData}) {
           </tr>
         </thead>
         <tbody>
-          {positionData.mining.map((token, index) => {
+          {Object.entries(positionData).length && positionData.mining.map((token, index) => {
             return  (
               <tr>
                 <th scope="row">{token.tokenName}</th> 
@@ -61,7 +61,7 @@ export function PositionTable({positionData}) {
           </tr>
         </thead>
         <tbody>
-          {positionData.earning.map((token, index) => {
+          {Object.entries(positionData).length && positionData.earning.map((token, index) => {
             return  (
               <tr>
                 <th scope="row">{token.tokenName}</th> 

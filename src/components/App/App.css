@@ -1,5 +1,5 @@
 body {
-  background-color: #F5F5F5;
+  background-color: #F7FAFC;
   font-family: 'Work Sans';
   font-weight: 400;
   color: #404C55;
@@ -11,17 +11,17 @@ h1 {
 }
 
 .btn-light {
-  width: 87px;
-  height: 36px;
-  border: '1px solid #404C55';
+  background-color: transparent;
+  padding: 10px 14px;
+  /* border: '1px solid #404C55'; */
   border-radius: 10px;
   color: #000000;
   font-family: 'Roboto';
 }
 
 .btn-dark {
-  width: 87px;
-  height: 36px;
+  border: none;
+  padding: 10px 14px;
   background-color: #404C55;
   border-radius: 10px;
   color: #FFFFFF;
@@ -35,4 +35,9 @@ h1 {
   border-radius: 10px;
   border: none;
   font-family: 'Roboto';
+}
+
+label {
+  font-size: 14;
+  font-weight: bold;
 }
