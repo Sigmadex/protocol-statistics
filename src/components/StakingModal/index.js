@@ -8,7 +8,7 @@ export function StakingModal() {
   function calculateAPY() {}
 
   return (
-    <div className='col-lg-7'>
+    <div className='col-lg-7' style={{marginBottom: 148}}>
       <div className='card' style={{border: 'none', boxShadow: '0px 4px 25px rgba(64, 76, 85, 0.15)', borderRadius: 20, marginTop: 40, padding: '30px 20px'}}>
         <h1 style={{paddingBottom: 50}}>Create New Staking Position</h1>  
         <div className='row' style={{paddingBottom: 50}}>
