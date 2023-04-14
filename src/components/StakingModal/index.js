@@ -7,13 +7,6 @@ export function StakingModal() {
 
   function calculateAPY() {}
 
-  {/* <div className="card">
-                  <div className="card-body">
-                    <h5 className="card-title">{item[1]}</h5>
-                    <p className="card-text">{item[0]}</p>
-                  </div>
-                </div> */}
-
   return (
     <div className='col-lg-7'>
       <div className='card' style={{border: 'none', boxShadow: '0px 4px 25px rgba(64, 76, 85, 0.15)', borderRadius: 20, marginTop: 40, padding: '30px 20px'}}>
@@ -44,36 +37,6 @@ export function StakingModal() {
           <button className='btn-dark'>Deposit</button>
           <button className='btn-light'>Attach APY NFT</button> 
         </div>
-      </div>
-    </div>
-  )
-
-  return (
-    <div>
-      <h1>Create New Staking Position</h1>  
-      <div className='row'>
-        <div className='col-sm-6' style={{display: 'flex', flexDirection: 'column'}}>
-          <label>Set SDEX Amount</label>
-          <input type='number' />
-        </div>
-        <div className='col-sm-6' style={{display: 'flex', flexDirection: 'column'}}>
-          <label>Set Stake Amount</label>
-          <input type='number' />
-        </div>
-      </div>
-      <div className='row' style={{display: 'flex', justifyContent: 'space-between'}}>
-        <span>
-          Estimated APY Value After Maturity:
-        </span>
-        <span style={{color: apy < 0 ? 'red' : apy > 0 ? '#51C64F' : '#404C55'}}>
-          <strong>{apy}%</strong>
-        </span>
-      </div>
-
-      <div className='row'>
-        <button className='btn-light'>Approve</button>
-        <button className='btn-dark'>Deposit</button>
-        <button className='btn-light'>Attach APY NFT</button> 
       </div>
     </div>
   )

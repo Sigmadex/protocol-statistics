@@ -3,13 +3,13 @@ import { BrowserRouter as Router, Link } from 'react-router-dom'
 
 const Logo = () => {
   return (
-    // <Link to='/'>
+    <Link to='/'>
       <img
-        style={{cursor: 'pointer', height: 21}}
+        style={{cursor: 'pointer', height: 36}}
         alt='Sigmadex logo'
         src='/images/logo-E-dark.svg' 
       />
-    // </Link>
+    </Link>
   )
 }
 
@@ -27,18 +27,25 @@ const navbarStyles = {
   justifyContent: 'space-between'
 }
 
+const linkStyles = {
+  color: '#798188',
+  fontWeight: '500',
+  marginRight: 30,
+  textDecoration: 'none'
+}
+
 export function Navbar(connectAccount) {
   return (
     <div className="row align-items-center justify-content-around" style={{height: 90, backgroundColor: '#FFFFFF', boxShadow: '0px 4px 25px rgba(64, 76, 85, 0.15)'}}>
-      <div className='col-lg-2 col-sm-2' style={{backgroundColor: 'orange'}}>
+      <div className='col-lg-2 col-sm-2'>
         <Logo />
       </div>
-      <div className="col-lg-8 col-sm-5" style={{backgroundColor: 'cyan'}}>
-        <Link to='/'>Home</Link>
-        <Link to='/positions'>Positions</Link>
-        <Link to='/governance'>Governance</Link>
+      <div className="col-lg-8 col-sm-5">
+        <Link style={linkStyles} to='/'>Home</Link>
+        <Link style={linkStyles} to='/positions'>Positions</Link>
+        <Link style={linkStyles} to='/governance'>Governance</Link>
       </div>
-      <div className='col-lg-2 col-sm-5' style={{backgroundColor: 'salmon'}}>
+      <div className='col-lg-2 col-sm-5'>
         <img
           alt='Avax logo'
           src='/images/avax-logo-inverse.svg'

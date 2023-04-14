@@ -20,7 +20,7 @@ export function Dashboard() {
 
   return (
     <div className="row justify-content-center">
-      <div className="col-lg-9 col-sm-12" style={{height: '100vh', backgroundColor: 'tomato'}}>
+      <div className="col-lg-9 col-sm-12" style={{height: '100vh'}}>
         <h1>Dashboard</h1>
         <span>View a global overview of the protocol statistics.</span>
         <hr />

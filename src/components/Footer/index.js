@@ -1,53 +1,34 @@
 const currentYear = () => new Date().getFullYear()
 
 const footerStyles = {
-  // backgroundColor: '#ffffff',
-  backgroundColor: 'gold',
-  height: '90px',
-  paddingLeft: '36px',
-  display: 'flex',
-  // alignItems: 'center',
-  justifyContent: 'space-between',
+  backgroundColor: '#f7fafc',
   position: 'fixed',
-  bottom: '0px',
-  left: '0px',
-  right: '0px',
-  fontSize: 14
+  alignItems: 'center',
+  padding: '0px 36px 0px 36px',
+  display: 'flex',
+  justifyContent: 'space-between',
+  height: 90,
+  bottom: 0,
+  left: 0,
+  right: 0
 }
 
 const fakeAddress = '154869129'
 
 export function Footer() {
-
   return (
     <div
-      style={{
-        backgroundColor: 'gold',
-        position: 'fixed',
-        // alignItems: 'center',
-        padding: '0px 36px 0px 36px',
-        display: 'flex',
-        justifyContent: 'space-between',
-        height: 90,
-        bottom: 0,
-        left: 0,
-        right: 0
-      }}
+      style={footerStyles}
     >
       <span
         style={{
-          backgroundColor: 'skyblue',
           alignContent: 'center'
         }}
       >
         &copy; {currentYear()}
       </span>
-      <span
-        style={{
-          backgroundColor: 'salmon'
-        }}
-      >
-        {fakeAddress}
+      <span>
+        <span style={{marginRight: 15}}>{fakeAddress}</span>
         <img
           alt='Block icon'
           src='/images/block.svg'
@@ -55,27 +36,4 @@ export function Footer() {
       </span>
     </div>
   )
-
-
-  return (
-    <div
-      // className={'footer'}
-      style={footerStyles}
-    >
-      <div>
-        &copy; {currentYear()}<a href='https://sigmadex.org/' style={{marginLeft: 5, color: '#404C55', textDecoration: 'none'}}>Sigma Labs</a>
-      </div>
-      <div>
-
-        {fakeAddress}
-
-        <img
-          style={{cursor: 'pointer', height: '21px', width: '24px', marginBottom: 3}}
-          alt='Block icon'
-          src='/images/block.svg'
-        />
-
-      </div>
-    </div>
-  );
 }

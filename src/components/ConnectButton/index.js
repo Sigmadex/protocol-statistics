@@ -29,7 +29,7 @@ const navbarButtonStyles = {
   color: '#ffffff'
 }
 
-export function ConnectButton() {
+export function ConnectButton({ inverse = null }) {
   return (
     <button
       style={buttonStyles}
