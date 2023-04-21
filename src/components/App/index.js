@@ -7,6 +7,7 @@ import { Governance } from "../Governance";
 import { Test } from "../Test";
 import { Breadcrumbs } from "../Breadcrumbs";
 import { Admin } from "../Admin";
+import { Wallet } from "../Wallet";
 import "./App.css";
 
 export function App() {
@@ -20,6 +21,7 @@ export function App() {
           <Route path="/admin" element={<Admin />} />
           <Route path="/positions" element={<Positions />} />
           <Route path="/governance" element={<Governance />} />
+          <Route path="/wallet" element={<Wallet />} />
           <Route path="/test" element={<Test />} />
         </Routes>
         <Footer />
