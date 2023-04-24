@@ -1,0 +1,1 @@
+export const Earn = () => <h1>Earn</h1>

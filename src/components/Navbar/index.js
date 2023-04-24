@@ -55,9 +55,27 @@ export const Navbar = () => {
             <Link className="nav-link active" to="/">
               Home
             </Link>
-            <Link className="nav-link" to="/positions">
+            <span
+              className="nav-link dropdown-toggle"
+              type="button"
+              id="dropdownMenuButton1"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
               Positions
-            </Link>
+            </span>
+            <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li>
+                <Link className="dropdown-item" to="/positions/earn">
+                  Earn APY
+                </Link>
+              </li>
+              <li>
+                <Link className="dropdown-item" to="/positions/mine">
+                  Mine APY
+                </Link>
+              </li>
+            </ul>
             <Link className="nav-link" to="/governance">
               Governance
             </Link>

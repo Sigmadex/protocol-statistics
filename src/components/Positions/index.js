@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Outlet } from 'react-router-dom'
 import { StakingModal } from '../StakingModal'
 import { PositionTable } from '../PositionTable'
 
@@ -49,15 +50,16 @@ export function Positions() {
     <div className="row justify-content-center" style={{height: 90}}>
       <div className="col-lg-9 col-sm-12">
         <h1>Positions</h1>
-        <span>View your active stakes.</span>
+        <Outlet />
+        {/* <span>View your active stakes.</span>
         <div className='row'>
           <button className='btn-colored'>&#8592; Earn APY</button>
         </div>
         <hr />
         <div className='row justify-content-center'>
           <StakingModal />
-          {/* <PositionTable positionData={data} /> */}
-        </div>
+          <PositionTable positionData={data} />
+        </div> */}
       </div>
     </div>
   )
