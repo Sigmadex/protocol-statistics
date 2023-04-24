@@ -16,6 +16,19 @@ const buttonStyles = {
   cursor: "pointer",
   color: "#404C55",
 };
+
+const inverseButtonStyles = {
+  width: "144px",
+  height: "36px",
+  border: "1px solid #404C55",
+  borderRadius: "10px",
+  backgroundColor: "#404C55",
+  fontSize: "14px",
+  fontWeight: "600",
+  cursor: "pointer",
+  color: "#fff",
+};
+
 // if button is used in Navbar component, apply these styles
 const navbarButtonStyles = {
   width: "138px",
@@ -29,8 +42,8 @@ const navbarButtonStyles = {
   color: "#ffffff",
 };
 
-export function ConnectButton({ inverse = null }) {
-  return <button style={buttonStyles}>Connect Wallet</button>;
+export function ConnectButton({inverse}) {
+  return <button style={inverse ? inverseButtonStyles : buttonStyles}>Connect Wallet</button>;
 }
 // export function ConnectButton(connectAccount, navbar) {
 //     const walletAddress = useContext(AddressContext)

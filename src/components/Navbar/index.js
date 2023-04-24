@@ -55,6 +55,9 @@ export const Navbar = () => {
             <Link className="nav-link active" to="/">
               Home
             </Link>
+            <Link className="nav-link active" to="/wallet">
+              Wallet
+            </Link>
             <span
               className="nav-link dropdown-toggle"
               type="button"
