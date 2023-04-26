@@ -15,24 +15,22 @@ const tempTokens = [
 
 export const SelectToken = () => {
   const [selectedToken, setSelectedToken] = useState("");
-  const [tokens, setTokens] = useState([
-    {
-      tokenName: "Ethereum",
-      tokenSymbol: "ETH",
-      price: 2489.46,
-    },
-    {
-      tokenName: "Bitcoin",
-      tokenSymbol: "BTC",
-      price: 37051.31,
-    },
-  ]);
+  const [tokens, setTokens] = useState([]);
+
+  const apiKey = process.env.REACT_APP_COINAPI_KEY
+  const assetsEndpoint = "https://rest.coinapi.io/v1/assets/"
+  const limit = '10' // limit coins to 10
 
   // useEffect(() => {
-  //   setTimeout(() => {
-  //     setTokens(tempTokens);
-  //   }, 2000);
-  // }, []);
+  //   fetch(`https://rest.coinapi.io/v1/assets/?apiKey=${apiKey}&limit=${limit}`, {
+  //     method: 'GET',
+  //     headers: {
+  //       Accept: 'application/json'
+  //     }
+  //   })
+  //     .then(res => res.json())
+  //     .then(json => console.log(json))
+  // }, [])
 
   return (
     <div>
@@ -40,9 +38,7 @@ export const SelectToken = () => {
       <div>Search</div>
       <div>
         <ul>
-          {tokens.map((token) => {
-            <li>{token.tokenName}</li>;
-          })}
+          {tokens.length ? tokens.map(token => <li key={token.tokenSymbol}>{token.tokenName}</li>) : null}
         </ul>
       </div>
     </div>
