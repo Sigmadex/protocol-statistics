@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+const localCoinData = require('../local_coin_data.json')
 
 const tempTokens = [
   {
@@ -32,13 +33,31 @@ export const SelectToken = () => {
   //     .then(json => console.log(json))
   // }, [])
 
+  useEffect(() => {
+    setTokens(localCoinData)
+  }, [])
+
+  useEffect(() => {
+    if (tokens.length) {
+      console.log(tokens[0])
+    }
+  }, [tokens])
+
   return (
     <div>
       <h1>Select a token</h1>
       <div>Search</div>
       <div>
         <ul>
-          {tokens.length ? tokens.map(token => <li key={token.tokenSymbol}>{token.tokenName}</li>) : null}
+          {/* {tokens.length ? tokens.map(token => <li key={token.tokenSymbol}>{token.tokenName}</li>) : null} */}
+          {tokens.length && 
+            tokens.map(token => {
+              return (
+                <li key={token.asset_id}>
+                  <span>{`${token.asset_id} - $${token.price_usd.toFixed(3)}`}</span>
+                </li>
+              )
+            })}
         </ul>
       </div>
     </div>
