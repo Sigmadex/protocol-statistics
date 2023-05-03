@@ -34,6 +34,11 @@ const linkStyles = {
   textDecoration: "none",
 };
 
+const dropdownStyles = {
+  width: 397,
+  height: 134
+}
+
 export const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg">
@@ -67,15 +72,27 @@ export const Navbar = () => {
             >
               Positions
             </span>
-            <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <ul className="dropdown-menu" style={dropdownStyles} aria-labelledby="dropdownMenuButton1">
               <li>
                 <Link className="dropdown-item" to="/positions/earn">
-                  Earn APY
+                  <span>
+                    <img
+                      alt='Earn APY'
+                      src='/images/earn_icon.svg'
+                    />
+                    Earn APY                    
+                  </span>
                 </Link>
               </li>
               <li>
                 <Link className="dropdown-item" to="/positions/mine">
-                  Mine APY
+                  <span>
+                    <img
+                      alt='Mine APY'
+                      src='/images/mine_icon.svg'
+                    />                    
+                    Mine APY
+                  </span>
                 </Link>
               </li>
             </ul>

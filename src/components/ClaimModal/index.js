@@ -1,5 +1,6 @@
 import { useState, useEffect, useDebugValue } from 'react'
 import { ConnectButton } from '../ConnectButton'
+import Modal from '../Modal.js'
 
 let testRewards = [
   {
@@ -18,6 +19,7 @@ export function ClaimModal() {
   const [rewards, setRewards] = useState([])
   const [isEligible, setEligibility] = useState(false)
   const [referrer, setReferrer] = useState('')
+  const [displayModal, toggleModal] = useState(true)
 
   useEffect(() => {
     setRewards(testRewards)
@@ -58,6 +60,9 @@ export function ClaimModal() {
         <div style={{textAlign: 'center'}}>
           <ConnectButton />
         </div>
+
+        {/* <Modal displayModal={true} toggleModal={toggleModal} /> */}
+
       </div>
     </div>
   )
