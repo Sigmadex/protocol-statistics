@@ -14,6 +14,29 @@ const tempTokens = [
   },
 ];
 
+const Search = ({filterTokens}) => {
+  return (
+    <input onChange={e => filterTokens(e.target.value)} className="form-control" tyoe='text' />
+  )
+}
+
+const MostPopular = ({tokens}) => {
+  return (
+    <div>
+      {tokens.map(token => 
+        <div style={{backgroundColor: 'gold', fontSize: 14, fontWeight: 'bold', display: 'inline-block', width: 83, height: 44, border: '1px solid #404C55', borderRadius: 10, marginRight: 10}}>
+          <img
+            alt={`token.name`}
+            src='/images/avax-logo.svg'
+            style={{width: 24, height: 24}}
+          />
+          {token.asset_id}
+        </div>
+      )}
+    </div>
+  )
+}
+
 export const SelectToken = () => {
   const [selectedToken, setSelectedToken] = useState("");
   const [tokens, setTokens] = useState([]);
@@ -37,24 +60,51 @@ export const SelectToken = () => {
     setTokens(localCoinData)
   }, [])
 
-  useEffect(() => {
-    if (tokens.length) {
-      console.log(tokens[0])
+  // useEffect(() => {
+  //   if (tokens.length) {
+  //     console.log(tokens[0])
+  //   }
+  // }, [tokens])
+
+  function filterTokens(filterBy) {
+    if (filterBy !== '') { // || tokens.length > 0
+      console.log('filtering by ', filterBy)
+      let filteredTokens = [...tokens]
+        .filter(token => token.asset_id.toLowerCase() === filterBy.toLowerCase() || token.name.toLowerCase() === filterBy.toLowerCase())
+      setTokens(filteredTokens)
     }
-  }, [tokens])
+  }
 
   return (
     <div>
       <h1>Select a token</h1>
-      <div>Search</div>
+      <Search filterTokens={filterTokens} />
+      <MostPopular tokens={tokens} />
       <div>
-        <ul>
+        <ul style={{padding: 0, listStyleType: 'none'}}>
           {/* {tokens.length ? tokens.map(token => <li key={token.tokenSymbol}>{token.tokenName}</li>) : null} */}
           {tokens.length && 
             tokens.map(token => {
               return (
                 <li key={token.asset_id}>
-                  <span>{`${token.asset_id} - $${token.price_usd.toFixed(3)}`}</span>
+                  <div style={{display: 'inline-block'}}>
+                    <img
+                      alt={`token.name`}
+                      src='/images/avax-logo.svg'
+                      style={{display: 'inline-block', width: 42, height: 42}}
+                    />
+                    {/* {`${token.asset_id} - $${token.price_usd.toFixed(3)}`} */}
+
+                    <div className='row'>
+                      {token.name}
+                    </div>
+                    <div className='row'>
+                      {token.asset_id}
+                    </div>
+                  </div>
+                  <div style={{display: 'inline-block'}}>
+                    ${token.price_usd.toFixed(3)}
+                  </div>
                 </li>
               )
             })}

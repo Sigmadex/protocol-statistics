@@ -79,6 +79,7 @@ export const Navbar = () => {
                     <img
                       alt='Earn APY'
                       src='/images/earn_icon.svg'
+                      style={{width: 38, height: 38}}
                     />
                     Earn APY                    
                   </span>
@@ -90,6 +91,7 @@ export const Navbar = () => {
                     <img
                       alt='Mine APY'
                       src='/images/mine_icon.svg'
+                      style={{width: 38, height: 38}}
                     />                    
                     Mine APY
                   </span>
@@ -98,6 +100,9 @@ export const Navbar = () => {
             </ul>
             <Link className="nav-link" to="/governance">
               Governance
+            </Link>
+            <Link className="nav-link" to="/swap">
+              Swap
             </Link>
           </div>
           <img alt="Avax logo" src="/images/avax-logo-inverse.svg" />
