@@ -1,61 +1,73 @@
 import { useState, useEffect } from "react";
 const localCoinData = require("../local_coin_data.json");
 
-const tempTokens = [
-  {
-    tokenName: "Ethereum",
-    tokenSymbol: "ETH",
-    price: 2489.46,
-  },
-  {
-    tokenName: "Bitcoin",
-    tokenSymbol: "BTC",
-    price: 37051.31,
-  },
-];
-
-const Search = ({ filterTokens }) => {
+const Search = ({ setSearched }) => {
   return (
     <input
-      onChange={(e) => filterTokens(e.target.value)}
+      type="text"
       className="form-control"
-      tyoe="text"
+      onChange={(e) => setSearched(e.target.value)}
+      placeholder="Search for token"
+      style={{ marginBottom: 20 }}
     />
   );
 };
 
-const MostPopular = ({ tokens }) => {
-  return (
-    <div>
-      {tokens.map((token) => (
+const MostPopular = ({ tokens }) => (
+  <div
+    style={{
+      marginBottom: 20,
+      overflow: "scroll",
+      // overflowX: "hidden",
+      height: 44,
+      // width: 1000,
+    }}
+  >
+    {tokens.map((token, i) => (
+      <div style={{ display: "inline-block" }}>
         <div
           style={{
-            backgroundColor: "gold",
             fontSize: 14,
             fontWeight: "bold",
-            display: "inline-block",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            backgroundColor: "#fff",
             width: 83,
             height: 44,
-            border: "1px solid #404C55",
+            border: "1px solid rgba(64, 76, 85, 0.5)",
             borderRadius: 10,
             marginRight: 10,
+            paddingLeft: 10,
+            paddingRight: 10,
+            alpha: 0.5,
           }}
         >
           <img
-            alt={`token.name`}
-            src="/images/avax-logo.svg"
+            alt={`${token.name}`}
+            src={`/images/eth-logo.svg`}
             style={{ width: 24, height: 24 }}
           />
           {token.asset_id}
         </div>
-      ))}
-    </div>
-  );
+      </div>
+    ))}
+  </div>
+);
+
+const filteredTokens = (tokens, searched) => {
+  return searched === ""
+    ? tokens
+    : tokens.filter(
+        (token) =>
+          token.asset_id.toLowerCase().startsWith(searched.toLowerCase()) ||
+          token.name.toLowerCase().startsWith(searched.toLowerCase())
+      );
 };
 
 export const SelectToken = () => {
-  const [selectedToken, setSelectedToken] = useState("");
   const [tokens, setTokens] = useState([]);
+  const [searched, setSearched] = useState("");
 
   const apiKey = process.env.REACT_APP_COINAPI_KEY;
   const assetsEndpoint = "https://rest.coinapi.io/v1/assets/";
@@ -76,55 +88,45 @@ export const SelectToken = () => {
     setTokens(localCoinData);
   }, []);
 
-  // useEffect(() => {
-  //   if (tokens.length) {
-  //     console.log(tokens[0])
-  //   }
-  // }, [tokens])
-
-  function filterTokens(filterBy) {
-    if (filterBy !== "") {
-      // || tokens.length > 0
-      console.log("filtering by ", filterBy);
-      let filteredTokens = [...tokens].filter(
-        (token) =>
-          token.asset_id.toLowerCase() === filterBy.toLowerCase() ||
-          token.name.toLowerCase() === filterBy.toLowerCase()
-      );
-      setTokens(filteredTokens);
-    }
-  }
-
   return (
-    <div>
-      <h1>Select a token</h1>
-      <Search filterTokens={filterTokens} />
-      <MostPopular tokens={tokens} />
-      <div>
-        <ul style={{ padding: 0, listStyleType: "none" }}>
-          {/* {tokens.length ? tokens.map(token => <li key={token.tokenSymbol}>{token.tokenName}</li>) : null} */}
-          {tokens.length &&
-            tokens.map((token) => {
-              return (
-                <li key={token.asset_id}>
-                  <div style={{ display: "inline-block" }}>
-                    <img
-                      alt={`token.name`}
-                      src="/images/avax-logo.svg"
-                      style={{ display: "inline-block", width: 42, height: 42 }}
-                    />
-                    {/* {`${token.asset_id} - $${token.price_usd.toFixed(3)}`} */}
-
-                    <div className="row">{token.name}</div>
-                    <div className="row">{token.asset_id}</div>
-                  </div>
-                  <div style={{ display: "inline-block" }}>
-                    ${token.price_usd.toFixed(3)}
-                  </div>
-                </li>
-              );
-            })}
-        </ul>
+    <div className="col-lg-6 offset-lg-3">
+      <div
+        className="card"
+        style={{
+          border: "none",
+          boxShadow: "0px 4px 25px rgba(64, 76, 85, 0.15)",
+          borderRadius: 20,
+          marginTop: 40,
+          // padding: "30px 20px",
+          padding: "35px",
+        }}
+      >
+        <h1 style={{ fontSize: 34 }}>Select a token</h1>
+        <Search setSearched={setSearched} />
+        <MostPopular tokens={filteredTokens(tokens, searched)} />
+        {filteredTokens(tokens, searched).map((token, i) => {
+          return (
+            <div
+              style={{
+                borderBottom: "1px solid rgba(64, 76, 85, 0.5)",
+                height: 68,
+                display: "flex",
+                justifyContent: "space-between",
+              }}
+              key={i}
+            >
+              <span>
+                <img
+                  alt={`${token.name}`}
+                  src={`/images/eth-logo.svg`}
+                  style={{ width: 42, height: 42 }}
+                />
+                {token.name}
+              </span>
+              <span>{token.price_usd.toFixed(3)}</span>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

@@ -6,6 +6,7 @@ const Search = ({ setSearched }) => {
   return (
     <input
       type="text"
+      className="form-control"
       onChange={(e) => setSearched(e.target.value)}
       placeholder="Search for token"
     />
@@ -16,7 +17,27 @@ const MostPopular = ({ tokens }) => {
   return (
     <div>
       {tokens.map((token, i) => (
-        <span key={i}>{token.asset_id}</span>
+        <div
+          key={i}
+          style={{
+            backgroundColor: "gold",
+            fontSize: 14,
+            fontWeight: "bold",
+            display: "inline-block",
+            width: 83,
+            height: 44,
+            border: "1px solid #404C55",
+            borderRadius: 10,
+            marginRight: 10,
+          }}
+        >
+          <img
+            alt={`token.name`}
+            src="/images/avax-logo.svg"
+            style={{ width: 24, height: 24 }}
+          />
+          {token.asset_id}
+        </div>
       ))}
     </div>
   );
@@ -45,7 +66,7 @@ export function Test() {
       <h1>Test</h1>
       <Search setSearched={setSearched} />
       <MostPopular tokens={filteredTokens(tokens, searched)} />
-      <ul>
+      <ul style={{ padding: 0, listStyleType: "none" }}>
         {filteredTokens(tokens, searched).map((token, i) => (
           <li key={i}>{token.name}</li>
         ))}
