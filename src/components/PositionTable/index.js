@@ -1,21 +1,20 @@
 function MineActions() {
-  return <span style={{ backgroundColor: "#F2F6FA" }}>Actions</span>;
+  return (
+    <tr style={{ backgroundColor: "#F2F6FA" }}>
+      <th>Actions</th>
+    </tr>
+  );
 }
 
 function EarningActions() {
-  return <span style={{ backgroundColor: "#F2F6FA" }}>Actions</span>;
+  return (
+    <tr style={{ backgroundColor: "#F2F6FA" }}>
+      <th>Actions</th>
+    </tr>
+  );
 }
 
 export function PositionTable({ positionData }) {
-  {
-    /* <div className="card">
-                  <div className="card-body">
-                    <h5 className="card-title">{item[1]}</h5>
-                    <p className="card-text">{item[0]}</p>
-                  </div>
-                </div> */
-  }
-
   return (
     <div
       className="card"
@@ -38,23 +37,24 @@ export function PositionTable({ positionData }) {
           </tr>
         </thead>
         <tbody>
-          {Object.entries(positionData).length &&
-            positionData.mining.map((token, index) => {
-              return (
-                <tr>
-                  <th scope="row">{token.tokenName}</th>
-                  <td>{token.activeDuration} days</td>
-                  <td>{token.maturity} days remaining</td>
-                  <td>
-                    {token.unitsStaked} {token.tokenName}
-                  </td>
-                  <td>{token.nftAPY}%</td>
-                </tr>
-              );
-              // todo: onClick event to add an extra row underneath selected row that displays current actions
-            })}
+          {Object.entries(positionData).length
+            ? positionData.mining.map((token, index) => {
+                return (
+                  <tr key={index}>
+                    <th scope="row">{token.tokenName}</th>
+                    <td>{token.activeDuration} days</td>
+                    <td>{token.maturity} days remaining</td>
+                    <td>
+                      {token.unitsStaked} {token.tokenName}
+                    </td>
+                    <td>{token.nftAPY}%</td>
+                  </tr>
+                );
+                // todo: onClick event to add an extra row underneath selected row that displays current actions
+              })
+            : null}
+          <MineActions />
         </tbody>
-        <MineActions />
       </table>
       <h1>Earning</h1>
       <table className="table table-borderless">
@@ -69,25 +69,26 @@ export function PositionTable({ positionData }) {
           </tr>
         </thead>
         <tbody>
-          {Object.entries(positionData).length &&
-            positionData.earning.map((token, index) => {
-              return (
-                <tr>
-                  <th scope="row">{token.tokenName}</th>
-                  <td>{token.activeDuration} days</td>
-                  <td>{token.maturity} days remaining</td>
-                  <td>
-                    {token.unitsStaked} {token.tokenName}
-                  </td>
-                  <td>
-                    {token.earned} {token.tokenName}
-                  </td>
-                  <td>{token.nftAPY}%</td>
-                </tr>
-              );
-            })}
+          {Object.entries(positionData).length
+            ? positionData.earning.map((token, index) => {
+                return (
+                  <tr key={index}>
+                    <th scope="row">{token.tokenName}</th>
+                    <td>{token.activeDuration} days</td>
+                    <td>{token.maturity} days remaining</td>
+                    <td>
+                      {token.unitsStaked} {token.tokenName}
+                    </td>
+                    <td>
+                      {token.earned} {token.tokenName}
+                    </td>
+                    <td>{token.nftAPY}%</td>
+                  </tr>
+                );
+              })
+            : null}
+          <EarningActions />
         </tbody>
-        <EarningActions />
       </table>
     </div>
   );
