@@ -29,12 +29,14 @@ const localNfts = [
     status: "Owned",
     image: "",
     amount: 1,
+    gradient: "to bottom left, #FADD46, #FFB547 ",
   },
   {
     title: "APY Multiplier",
     status: "Owned",
     image: "",
     amount: 1,
+    gradient: "to bottom left, #46CEFA, #2B6CCC",
   },
 ];
 
@@ -49,32 +51,18 @@ export function Wallet() {
     }, 1000);
   }, []);
 
-  {
-    /* <img
-                  alt={`${token.name}`}
-                  src={`/images/eth-logo.svg`}
-                  style={{
-                    width: 42,
-                    height: 42,
-                    float: "left",
-                    marginRight: 10,
-                    paddingTop: 5,
-                  }}
-                /> */
-  }
-
   return (
     <div className="row justify-content-center">
-      {/* <div className="col-lg-10 col-sm-12" style={{height: '100vh'}}> */}
-      <div className="col-lg-9 col-sm-12" style={{ height: "100vh" }}>
-        <h1>Wallet</h1>
-        <span>View the current status of your wallet.</span>
-        <hr />
+      <div className="col-lg-8 col-sm-12" style={{ height: "100vh" }}>
         <div className="row">
+          <h1 style={{ fontSize: 60, marginBottom: 30 }}>Wallet</h1>
+          <p style={{ marginBottom: 15 }}>
+            View the current status of your wallet.
+          </p>
           {walletTokens.length ? (
-            walletTokens.map((token) => {
+            walletTokens.map((token, i) => {
               return (
-                <div className="col-sm-3">
+                <div className="col-sm-6 col-lg-3" key={i}>
                   <div
                     className="card"
                     style={{
@@ -83,30 +71,59 @@ export function Wallet() {
                       borderRadius: 20,
                       marginTop: 10,
                       marginBottom: 10,
+                      padding: 8,
                       height: 179,
                     }}
                   >
-                    <div className="card-body">
-                      {/* <h5 className="card-title">{item[1]}</h5> */}
-                      <div
-                        style={{ fontSize: 32, fontWeight: "bold" }}
-                        className="card-title"
-                      >
-                        {token.amountInCAD.toLocaleString("en-US", {
-                          style: "currency",
-                          currency: "USD",
-                        })}
+                    <div
+                      className="card-body"
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <div>
+                        <h3
+                          style={{
+                            fontSize: 24,
+                            fontWeight: "bold",
+                          }}
+                        >
+                          {token.amountInCAD.toLocaleString("en-US", {
+                            style: "currency",
+                            currency: "USD",
+                          })}
+                        </h3>
+                        <h6
+                          style={{
+                            color: "#404C55",
+                            fontSize: 14,
+                            fontWeight: "lighter",
+                            opacity: 0.5,
+                          }}
+                        >
+                          {`${token.amountInCAD
+                            .toLocaleString("en-US", {
+                              style: "currency",
+                              currency: "USD",
+                            })
+                            .replace("$", "")} ${token.tokenName}`}
+                        </h6>
                       </div>
-                      <div style={{ fontSize: 14 }} className="card-text">
-                        {`${token.amountInCAD} ${token.tokenName}`}
-                      </div>
-                      <div style={{ fontWeight: "bold" }}>
+                      <div style={{ fontSize: 14 }}>
                         <img
                           alt="AVAX"
                           src="/images/sigmadex-logo-square.svg"
-                          style={{ height: 28, borderRadius: "50%" }}
+                          style={{
+                            height: 28,
+                            borderRadius: "50%",
+                            marginRight: 10,
+                          }}
                         />
-                        {token.tokenName}
+                        <span style={{ fontSize: 16, fontWeight: "bold" }}>
+                          {token.tokenName}
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -117,12 +134,57 @@ export function Wallet() {
             <span>No wallet tokens found.</span>
           )}
         </div>
-        <hr />
+        <hr style={{ marginBottom: 40 }} />
         <div className="row">
-          <h2>APY NFTs</h2>
-          <span>View and manage the APY NFTs you own.</span>
+          <h1 style={{ fontSize: 48, marginBottom: 30 }}>APY NFTs</h1>
+          <p style={{ marginBottom: 15 }}>
+            View and manage the APY NFTs you own.
+          </p>
           {nfts.length ? (
-            nfts.map((nft, i) => <span>{nft.title}</span>)
+            nfts.map((nft, i) => {
+              return (
+                <div
+                  className="col-sm-6 col-lg-3"
+                  // style={{ borderRadius: 50 }}
+                  key={i}
+                >
+                  <div
+                    className="card"
+                    style={{ height: 348, borderRadius: 10 }}
+                  >
+                    <div
+                      style={{
+                        background: `linear-gradient(${nft.gradient})`,
+                        // borderRadius: 50,
+                        height: 300,
+                      }}
+                    ></div>
+                    {/* <img src="..." className="card-img-top" alt="..." /> */}
+                    <div className="card-body">
+                      <h5
+                        className="card-title"
+                        style={{ fontSize: 16, fontWeight: "bold" }}
+                      >
+                        {nft.title}
+                      </h5>
+                      <hr />
+                      <div
+                        className="card-text"
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                        }}
+                      >
+                        <span>Status:</span>
+                        <span>
+                          <strong>{`${nft.status} (${nft.amount})`}</strong>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })
           ) : (
             <span>No NFTs found.</span>
           )}
