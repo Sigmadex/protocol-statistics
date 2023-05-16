@@ -155,12 +155,12 @@ export function Wallet() {
                     <div
                       style={{
                         background: `linear-gradient(${nft.gradient})`,
-                        // borderRadius: 50,
+                        borderRadius: "10px 10px 0px 0px",
                         height: 300,
                       }}
                     ></div>
                     {/* <img src="..." className="card-img-top" alt="..." /> */}
-                    <div className="card-body">
+                    <div className="card-body" style={{ padding: 20 }}>
                       <h5
                         className="card-title"
                         style={{ fontSize: 16, fontWeight: "bold" }}

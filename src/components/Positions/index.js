@@ -48,17 +48,23 @@ export function Positions() {
 
   return (
     <div className="row justify-content-center" style={{ height: 90 }}>
-      <div className="col-lg-9 col-sm-12">
-        <h1>Positions</h1>
-        {/* <Outlet /> */}
-        <span>View your active stakes.</span>
+      <div className="col-lg-8 col-sm-12">
         <div className="row">
-          <button className="btn-colored">&#8592; Earn APY</button>
+          <div className="col-lg-12">
+            <h1 style={{ marginBottom: 30 }}>Positions</h1>
+            {/* <Outlet /> */}
+            <p style={{ marginBottom: 15 }}>View your active stakes.</p>
+            <button className="btn-colored" style={{ marginBottom: 10 }}>
+              &#8592; Earn APY
+            </button>
+            <hr />
+          </div>
         </div>
-        <hr />
-        <div className="row justify-content-center">
-          <StakingModal />
-          <PositionTable positionData={data} />
+        <div className="row">
+          <div className="col-lg-12">
+            {/* <StakingModal /> */}
+            <PositionTable positionData={data} />
+          </div>
         </div>
       </div>
     </div>

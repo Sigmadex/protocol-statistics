@@ -36,8 +36,8 @@ const linkStyles = {
 
 const dropdownStyles = {
   width: 397,
-  height: 134
-}
+  height: 134,
+};
 
 export const Navbar = () => {
   return (
@@ -72,27 +72,31 @@ export const Navbar = () => {
             >
               Positions
             </span>
-            <ul className="dropdown-menu" style={dropdownStyles} aria-labelledby="dropdownMenuButton1">
+            <ul
+              className="dropdown-menu"
+              style={dropdownStyles}
+              aria-labelledby="dropdownMenuButton1"
+            >
               <li>
                 <Link className="dropdown-item" to="/positions/earn">
-                  <span>
+                  <span className="dropdown-item">
                     <img
-                      alt='Earn APY'
-                      src='/images/earn_icon.svg'
-                      style={{width: 38, height: 38}}
+                      alt="Earn APY"
+                      src="/images/earn_icon.svg"
+                      style={{ width: 38, height: 38, marginRight: 10 }}
                     />
-                    Earn APY                    
+                    Earn APY
                   </span>
                 </Link>
               </li>
               <li>
                 <Link className="dropdown-item" to="/positions/mine">
-                  <span>
+                  <span className="dropdown-item">
                     <img
-                      alt='Mine APY'
-                      src='/images/mine_icon.svg'
-                      style={{width: 38, height: 38}}
-                    />                    
+                      alt="Mine APY"
+                      src="/images/mine_icon.svg"
+                      style={{ width: 38, height: 38, marginRight: 10 }}
+                    />
                     Mine APY
                   </span>
                 </Link>
