@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const localWalletTokens = [
   {
@@ -30,6 +31,7 @@ const localNfts = [
     image: "",
     amount: 1,
     gradient: "to bottom left, #FADD46, #FFB547 ",
+    address: "0x0000000000000000000000000000000000000000",
   },
   {
     title: "APY Multiplier",
@@ -37,6 +39,7 @@ const localNfts = [
     image: "",
     amount: 1,
     gradient: "to bottom left, #46CEFA, #2B6CCC",
+    address: "0x0000000000000000000000000000000000000000",
   },
 ];
 
@@ -165,7 +168,16 @@ export function Wallet() {
                         className="card-title"
                         style={{ fontSize: 16, fontWeight: "bold" }}
                       >
-                        {nft.title}
+                        {/* <Link
+                          to={{
+                            pathname: `/nft/${nft.address}`,
+                            state: { ...nft },
+                          }}
+                          style={{ textDecoration: "none" }}
+                        > */}
+                        <Link to={`/nft/${nft.address}`} state={{ data: nft }}>
+                          {nft.title}
+                        </Link>
                       </h5>
                       <hr />
                       <div
