@@ -56,7 +56,7 @@ export function Wallet() {
 
   return (
     <div className="row justify-content-center">
-      <div className="col-lg-8 col-sm-12" style={{ height: "100vh" }}>
+      <div className="col-lg-8 col-sm-12" style={{ marginBottom: 135 }}>
         <div className="row">
           <h1 style={{ fontSize: 60, marginBottom: 30 }}>Wallet</h1>
           <p style={{ marginBottom: 15 }}>

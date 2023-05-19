@@ -47,7 +47,7 @@ export function Positions() {
   }, []); // use walletAddress as parameter
 
   return (
-    <div className="row justify-content-center" style={{ height: 90 }}>
+    <div className="row justify-content-center" style={{ marginBottom: 135 }}>
       <div className="col-lg-8 col-sm-12">
         <div className="row">
           <div className="col-lg-12">

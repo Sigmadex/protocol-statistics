@@ -94,8 +94,8 @@ export function PositionTable({ positionData }) {
             {Object.entries(positionData).length
               ? positionData.earning.map((token, index) => {
                   return (
-                    <tr key={index}>
-                      <th scope="row">{token.tokenName}</th>
+                    <tr key={index} style={{ fontSize: 14 }}>
+                      <td>{token.tokenName}</td>
                       <td>{token.activeDuration} days</td>
                       <td>{token.maturity} days remaining</td>
                       <td>
@@ -104,7 +104,7 @@ export function PositionTable({ positionData }) {
                       <td>
                         {token.earned} {token.tokenName}
                       </td>
-                      <td>{token.nftAPY}%</td>
+                      <td>{token.apy}%</td>
                     </tr>
                   );
                 })

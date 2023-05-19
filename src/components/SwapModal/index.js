@@ -1,12 +1,16 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from "react";
 import { ConnectButton } from "../ConnectButton";
-import { SelectToken } from '../SelectToken'
+import { SelectToken } from "../SelectToken";
 
 export const SwapModal = () => {
-  const [token1, setToken1] = useState('')
-  const [token2, setToken2] = useState('')
+  const [token1, setToken1] = useState("");
+  const [token2, setToken2] = useState("");
 
-  return <SelectToken />
+  return (
+    <div className="row" style={{ marginBottom: 135 }}>
+      <SelectToken />
+    </div>
+  );
 
   return (
     <div>
@@ -34,10 +38,8 @@ export const SwapModal = () => {
           <input />
         </div>
       </div>
-      <div>
-
-      </div>
+      <div></div>
       <ConnectButton />
     </div>
-  )
-}
+  );
+};

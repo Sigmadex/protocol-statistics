@@ -43,7 +43,7 @@ export function Dashboard({ match }) {
 
   return (
     <div className="row justify-content-center">
-      <div className="col-lg-8 col-sm-12" style={{ height: "100vh" }}>
+      <div className="col-lg-8 col-sm-12" style={{ marginBottom: 135 }}>
         <h1 style={{ marginBottom: 30 }}>Dashboard</h1>
         <p style={{ marginBottom: 40 }}>
           View a global overview of the protocol statistics.
