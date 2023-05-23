@@ -41,7 +41,10 @@ const dropdownStyles = {
 
 export const Navbar = () => {
   return (
-    <nav className="navbar navbar-expand-lg">
+    <nav
+      className="navbar navbar-expand-lg"
+      style={{ backgroundColor: "#fff" }}
+    >
       <div className="container-fluid">
         <Logo />
         <button
