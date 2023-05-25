@@ -13,12 +13,14 @@ import { Wallet } from "../Wallet";
 import "./App.css";
 import { SwapModal } from "../SwapModal";
 import { NFT } from "../NFT";
+import { Navbar2 } from "../Navbar2";
 
 export function App() {
   return (
-    <div className="container-fluid">
-      <Router>
-        <Navbar />
+    <Router>
+      {/* <Navbar /> */}
+      <Navbar2 />
+      <div className="container-fluid">
         <Breadcrumbs />
         <Routes>
           <Route path="" element={<Dashboard />} />
@@ -34,7 +36,7 @@ export function App() {
           <Route path="swap" element={<SwapModal />} />
         </Routes>
         <Footer />
-      </Router>
-    </div>
+      </div>
+    </Router>
   );
 }

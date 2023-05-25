@@ -62,7 +62,7 @@ const MostPopular = ({ tokens, selectToken }) => (
 export const SelectToken = () => {
   const [tokens, setTokens] = useState([]);
   const [searched, setSearched] = useState("");
-  const [selectedToken, setSelectedToken] = useState(null);
+  const [selectedToken, setSelectedToken] = useState({});
 
   const apiKey = process.env.REACT_APP_COINAPI_KEY;
   const assetsEndpoint = "https://rest.coinapi.io/v1/assets/";
@@ -96,7 +96,7 @@ export const SelectToken = () => {
   const selectToken = (token) => {
     // alert("Selected ", token);
     console.log("Selected", token);
-    // setSelectedToken(token)
+    setSelectedToken(token);
   };
 
   return (
@@ -131,7 +131,7 @@ export const SelectToken = () => {
                 alignItems: "center",
               }}
               key={i}
-              onClick={() => selectToken(token.asset_id)}
+              onClick={() => selectToken(token)}
             >
               <div style={{ display: "inline-block" }}>
                 <img
