@@ -28,7 +28,7 @@ export function ClaimModal() {
   // function calculateAPY() {}
 
   return (
-    <div className="col-lg-5">
+    <div className="col-lg-4 offset-lg-4">
       <div
         className="card"
         style={{

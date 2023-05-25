@@ -1,5 +1,13 @@
 import { useParams, useLocation } from "react-router-dom";
 
+const formatBreadcrumbs = (pathname) => {
+  pathname = pathname.split('/').filter(path => path !== '')
+  for (let i = 0; i < pathname.length; i++) {
+    pathname[i] = pathname[i].charAt(0).toUpperCase() + pathname[i].slice(1)
+  }
+  return pathname.join('/')
+}
+
 export function Breadcrumbs() {
   const location = useLocation();
   const pathname = location.pathname === "/" ? "home" : location.pathname;
@@ -31,7 +39,7 @@ export function Breadcrumbs() {
         className="col-lg-8 col-sm-12"
         style={{ marginTop: 60, marginBottom: 30 }}
       >
-        <span style={{ color: "#404C55", fontWeight: "bold" }}>{pathname}</span>
+        <span style={{ color: "#404C55", fontWeight: "bold" }}>{formatBreadcrumbs(pathname)}</span>
       </div>
     </div>
   );

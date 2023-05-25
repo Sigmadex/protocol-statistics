@@ -62,15 +62,17 @@ export function Test() {
   }, []);
 
   return (
-    <div>
-      <h1>Test</h1>
-      <Search setSearched={setSearched} />
-      <MostPopular tokens={filteredTokens(tokens, searched)} />
-      <ul style={{ padding: 0, listStyleType: "none" }}>
-        {filteredTokens(tokens, searched).map((token, i) => (
-          <li key={i}>{token.name}</li>
-        ))}
-      </ul>
+    <div className="row">
+      <div className="col-lg-12">
+        <h1>Test</h1>
+        <Search setSearched={setSearched} />
+        <MostPopular tokens={filteredTokens(tokens, searched)} />
+        <ul style={{ padding: 0, listStyleType: "none" }}>
+          {filteredTokens(tokens, searched).map((token, i) => (
+            <li key={i}>{token.name}</li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
