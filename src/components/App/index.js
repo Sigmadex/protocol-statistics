@@ -13,13 +13,11 @@ import { Wallet } from "../Wallet";
 import "./App.css";
 import { SwapModal } from "../SwapModal";
 import { NFT } from "../NFT";
-import { Navbar2 } from "../Navbar2";
 
 export function App() {
   return (
     <Router>
-      {/* <Navbar /> */}
-      <Navbar2 />
+      <Navbar />
       <div className="container-fluid">
         <Breadcrumbs />
         <Routes>

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { ConnectButton } from "../ConnectButton";
+import { ConnectButton } from "./ConnectButton";
+import { CircularImage } from "./CircularImage";
 
 const Logo = () => {
   return (
@@ -13,27 +14,6 @@ const Logo = () => {
   );
 };
 
-const navbarStyles = {
-  height: "90px",
-  // paddingTop: '90px',
-  paddingLeft: "36px",
-  paddingRight: "36px",
-  display: "flex",
-  alignItems: "center",
-  position: "fixed",
-  top: "0px",
-  left: "0px",
-  right: "0px",
-  justifyContent: "space-between",
-};
-
-const linkStyles = {
-  color: "#798188",
-  fontWeight: "500",
-  marginRight: 30,
-  textDecoration: "none",
-};
-
 const dropdownStyles = {
   width: 397,
   height: 134,
@@ -41,79 +21,109 @@ const dropdownStyles = {
 
 export const Navbar = () => {
   return (
-    <nav
-      className="navbar navbar-expand-lg"
-      style={{ backgroundColor: "#fff" }}
-    >
-      <Logo />
-      <button
-        className="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span className="navbar-toggler-icon"></span>
-      </button>
-      <div className="collapse navbar-collapse" id="navbarSupportedContent">
-        <div className="navbar-nav me-auto mb-2 mb-lg-0">
-          <Link className="nav-link active" to="/">
-            Home
-          </Link>
-          <Link className="nav-link active" to="/wallet">
-            Wallet
-          </Link>
-          <span
-            className="nav-link dropdown-toggle"
+    <div class="container-fluid">
+      <div class="row">
+        <nav
+          className="navbar navbar-expand-lg navbar-light"
+          style={{
+            backgroundColor: "#fff",
+            // height: 90,
+            boxShadow: "0px 4px 30px rgba(166, 194, 215, 0.3)",
+          }}
+        >
+          <div className="col-lg-2">
+            <Logo />
+          </div>
+          <div className="collapse navbar-collapse" id="navbarText">
+            <div className="col-lg-10">
+              <ul className="navbar-nav me-auto">
+                <li className="nav-item">
+                  <Link className="nav-link active" to="/">
+                    Home
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link active" to="/wallet">
+                    Wallet
+                  </Link>
+                </li>
+
+                <span
+                  className="nav-link dropdown-toggle"
+                  type="button"
+                  id="dropdownMenuButton1"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Positions
+                </span>
+                <ul
+                  className="dropdown-menu"
+                  style={dropdownStyles}
+                  aria-labelledby="dropdownMenuButton1"
+                >
+                  <li>
+                    <Link className="dropdown-item" to="/positions/earn">
+                      <span className="dropdown-item">
+                        <img
+                          alt="Earn APY"
+                          src="/images/earn_icon.svg"
+                          style={{ width: 38, height: 38, marginRight: 10 }}
+                        />
+                        Earn APY
+                      </span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="dropdown-item" to="/positions/mine">
+                      <span className="dropdown-item">
+                        <img
+                          alt="Mine APY"
+                          src="/images/mine_icon.svg"
+                          style={{ width: 38, height: 38, marginRight: 10 }}
+                        />
+                        Mine APY
+                      </span>
+                    </Link>
+                  </li>
+                </ul>
+
+                <li className="nav-item">
+                  <Link className="nav-link" to="/governance">
+                    Governance
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/swap">
+                    Swap
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div className="col-lg-2">
+              <span style={{ marginRight: 20 }}>
+                <CircularImage
+                  url="/images/avax-logo-square.svg"
+                  width={37}
+                  height={37}
+                />
+              </span>
+              <ConnectButton />
+            </div>
+          </div>
+          <button
+            className="navbar-toggler"
             type="button"
-            id="dropdownMenuButton1"
-            data-bs-toggle="dropdown"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarText"
+            aria-controls="navbarText"
             aria-expanded="false"
+            aria-label="Toggle navigation"
           >
-            Positions
-          </span>
-          <ul
-            className="dropdown-menu"
-            style={dropdownStyles}
-            aria-labelledby="dropdownMenuButton1"
-          >
-            <li>
-              <Link className="dropdown-item" to="/positions/earn">
-                <span className="dropdown-item">
-                  <img
-                    alt="Earn APY"
-                    src="/images/earn_icon.svg"
-                    style={{ width: 38, height: 38, marginRight: 10 }}
-                  />
-                  Earn APY
-                </span>
-              </Link>
-            </li>
-            <li>
-              <Link className="dropdown-item" to="/positions/mine">
-                <span className="dropdown-item">
-                  <img
-                    alt="Mine APY"
-                    src="/images/mine_icon.svg"
-                    style={{ width: 38, height: 38, marginRight: 10 }}
-                  />
-                  Mine APY
-                </span>
-              </Link>
-            </li>
-          </ul>
-          <Link className="nav-link" to="/governance">
-            Governance
-          </Link>
-          <Link className="nav-link" to="/swap">
-            Swap
-          </Link>
-        </div>
-        <img alt="Avax logo" src="/images/avax-logo-inverse.svg" />
-        <ConnectButton />
+            <span className="navbar-toggler-icon"></span>
+          </button>
+        </nav>
       </div>
-    </nav>
+    </div>
   );
 };
