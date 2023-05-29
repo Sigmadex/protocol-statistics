@@ -47,37 +47,65 @@ export function UserTable(users) {
   }, []);
 
   return (
-    <div className="table-responsive">
-      <table className="table" style={{ color: "#404C55" }}>
-        <thead>
-          <tr>
-            <th scope="col">TxID</th>
-            <th scope="col">Timestamp</th>
-            <th scope="col">User</th>
-            <th scope="col">AVAX Amt</th>
-            <th scope="col">Claim Amt</th>
-            <th scope="col">Ref Address</th>
-            <th scope="col">Ref Amt</th>
-          </tr>
-        </thead>
-        <tbody>
-          {userData.length
-            ? userData.map((user) => {
-                return (
-                  <tr>
-                    <td>{user.txId}</td>
-                    <td>{user.timestamp}</td>
-                    <td>{user.user}</td>
-                    <td>{user.avaAmt}</td>
-                    <td>{user.claimAmt}</td>
-                    <td>{user.refAddress}</td>
-                    <td>{user.refAmt}</td>
-                  </tr>
-                );
-              })
-            : null}
-        </tbody>
-      </table>
+    <div
+      className="card"
+      style={{
+        border: "none",
+        boxShadow: "0px 4px 25px rgba(64, 76, 85, 0.15)",
+        borderRadius: 20,
+        padding: 25,
+        marginTop: 30,
+      }}
+    >
+      <div className="row">
+        <select>
+          <option>Less Than</option>
+        </select>
+        <input type="text" />
+        <select>
+          <option>AVAX Amount</option>
+        </select>
+        <button>Export CSV</button>
+      </div>
+      <div className="table-responsive">
+        <table className="table" style={{ color: "#404C55" }}>
+          <thead>
+            <tr>
+              <th scope="col">TxID</th>
+              <th scope="col">Timestamp</th>
+              <th scope="col">User</th>
+              <th scope="col">AVAX Amt</th>
+              <th scope="col">Claim Amt</th>
+              <th scope="col">Ref Address</th>
+              <th scope="col">Ref Amt</th>
+            </tr>
+          </thead>
+          <tbody>
+            {userData.length
+              ? userData.map((user) => {
+                  return (
+                    <tr>
+                      <td>{user.txId}</td>
+                      <td>{user.timestamp}</td>
+                      <td>{user.user}</td>
+                      <td>{user.avaAmt}</td>
+                      <td>{user.claimAmt}</td>
+                      <td>{user.refAddress}</td>
+                      <td>{user.refAmt}</td>
+                    </tr>
+                  );
+                })
+              : null}
+          </tbody>
+        </table>
+      </div>
+      <div className="row">
+        Rows per page
+        <select>
+          <option>10</option>
+        </select>
+        1-5 of 13 ◀️ ▶️
+      </div>
     </div>
   );
 }

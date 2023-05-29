@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
+import { SigmadexButton } from "../SigmadexButton";
 
 export function NFT() {
   let { nftAddress } = useParams();
@@ -11,17 +12,8 @@ export function NFT() {
     setData(location.state?.data || {});
   }, []);
 
-  /* 
-      title: "No Penalties",
-    status: "Owned",
-    image: "",
-    amount: 1,
-    gradient: "to bottom left, #FADD46, #FFB547 ",
-    address: "0x0000000000000000000000000000000000000000",
-  */
-
   return (
-    <div className="row">
+    <div className="row" style={{ marginBottom: 100 }}>
       <div className="col-lg-8 offset-lg-2">
         <h1>NFT</h1>
         <h3>NFT address: {nftAddress}</h3>
@@ -33,7 +25,7 @@ export function NFT() {
         ></div>
         <p>Title: {data.title}</p>
         <p>Amount: {data.amount}</p>
-        <button onClick={() => navigate("/wallet")}>Go back</button>
+        <SigmadexButton buttonText="Go Back" func={() => navigate("/wallet")} />
       </div>
     </div>
   );

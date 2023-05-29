@@ -42,8 +42,12 @@ const navbarButtonStyles = {
   color: "#ffffff",
 };
 
-export function ConnectButton({inverse}) {
-  return <button style={inverse ? inverseButtonStyles : buttonStyles}>Connect Wallet</button>;
+export function ConnectButton({ inverse }) {
+  return (
+    <button style={inverse ? inverseButtonStyles : buttonStyles}>
+      Connect Wallet
+    </button>
+  );
 }
 // export function ConnectButton(connectAccount, navbar) {
 //     const walletAddress = useContext(AddressContext)

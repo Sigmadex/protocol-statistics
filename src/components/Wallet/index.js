@@ -151,49 +151,49 @@ export function Wallet() {
                   // style={{ borderRadius: 50 }}
                   key={i}
                 >
-                  <div
-                    className="card"
-                    style={{ height: 348, borderRadius: 10 }}
+                  <Link
+                    to={`/nft/${nft.address}`}
+                    state={{ data: nft }}
+                    style={{
+                      color: "inherit",
+                      textDecoration: "inherit",
+                    }}
                   >
                     <div
-                      style={{
-                        background: `linear-gradient(${nft.gradient})`,
-                        borderRadius: "10px 10px 0px 0px",
-                        height: 300,
-                      }}
-                    ></div>
-                    {/* <img src="..." className="card-img-top" alt="..." /> */}
-                    <div className="card-body" style={{ padding: 20 }}>
-                      <h5
-                        className="card-title"
-                        style={{ fontSize: 16, fontWeight: "bold" }}
-                      >
-                        {/* <Link
-                          to={{
-                            pathname: `/nft/${nft.address}`,
-                            state: { ...nft },
-                          }}
-                          style={{ textDecoration: "none" }}
-                        > */}
-                        <Link to={`/nft/${nft.address}`} state={{ data: nft }}>
-                          {nft.title}
-                        </Link>
-                      </h5>
-                      <hr />
+                      className="card"
+                      style={{ height: 348, borderRadius: 10 }}
+                    >
                       <div
-                        className="card-text"
                         style={{
-                          display: "flex",
-                          justifyContent: "space-between",
+                          background: `linear-gradient(${nft.gradient})`,
+                          borderRadius: "10px 10px 0px 0px",
+                          height: 300,
                         }}
-                      >
-                        <span>Status:</span>
-                        <span>
-                          <strong>{`${nft.status} (${nft.amount})`}</strong>
-                        </span>
+                      ></div>
+                      {/* <img src="..." className="card-img-top" alt="..." /> */}
+                      <div className="card-body" style={{ padding: 20 }}>
+                        <h5
+                          className="card-title"
+                          style={{ fontSize: 16, fontWeight: "bold" }}
+                        >
+                          {nft.title}
+                        </h5>
+                        <hr />
+                        <div
+                          className="card-text"
+                          style={{
+                            display: "flex",
+                            justifyContent: "space-between",
+                          }}
+                        >
+                          <span>Status:</span>
+                          <span>
+                            <strong>{`${nft.status} (${nft.amount})`}</strong>
+                          </span>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 </div>
               );
             })

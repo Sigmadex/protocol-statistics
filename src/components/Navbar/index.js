@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { ConnectButton } from "./ConnectButton";
-import { CircularImage } from "./CircularImage";
+import { ConnectButton } from "../ConnectButton";
+import { CircularImage } from "../CircularImage";
 
 const Logo = () => {
   return (
@@ -29,13 +29,14 @@ export const Navbar = () => {
             backgroundColor: "#fff",
             // height: 90,
             boxShadow: "0px 4px 30px rgba(166, 194, 215, 0.3)",
+            padding: 0,
           }}
         >
           <div className="col-lg-2">
             <Logo />
           </div>
           <div className="collapse navbar-collapse" id="navbarText">
-            <div className="col-lg-10">
+            <div className="col-lg-9">
               <ul className="navbar-nav me-auto">
                 <li className="nav-item">
                   <Link className="nav-link active" to="/">
@@ -47,7 +48,6 @@ export const Navbar = () => {
                     Wallet
                   </Link>
                 </li>
-
                 <span
                   className="nav-link dropdown-toggle"
                   type="button"
@@ -87,7 +87,6 @@ export const Navbar = () => {
                     </Link>
                   </li>
                 </ul>
-
                 <li className="nav-item">
                   <Link className="nav-link" to="/governance">
                     Governance
@@ -98,9 +97,14 @@ export const Navbar = () => {
                     Swap
                   </Link>
                 </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/admin">
+                    Admin
+                  </Link>
+                </li>
               </ul>
             </div>
-            <div className="col-lg-2">
+            <div className="col-lg-3" style={{ textAlign: "right" }}>
               <span style={{ marginRight: 20 }}>
                 <CircularImage
                   url="/images/avax-logo-square.svg"

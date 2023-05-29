@@ -86,3 +86,21 @@ label {
   font-size: 16;
   font-weight: 500;
 }
+
+.sigmadex-button {
+  /* box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box; */
+  width: 121px;
+  height: 36px;
+  border: 1px solid #404C55;
+  border-radius: 10px;
+  background-color: #404C55;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #ffffff;
+  box-shadow: 0px 4px 25px rgba(64, 76, 85, 0.15);
+  /* display: flex;
+  justify-content: space-between; */
+}
