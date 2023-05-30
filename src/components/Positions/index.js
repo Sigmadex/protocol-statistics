@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Outlet } from "react-router-dom";
-import { StakingModal } from "../StakingModal";
+import { StakeModal } from "../StakeModal";
 import { PositionTable } from "../PositionTable";
 import { SigmadexButton } from "../SigmadexButton";
 import { Link } from "react-router-dom";
@@ -83,7 +83,7 @@ export function Positions() {
         </div>
         <div className="row">
           <div className="col-lg-12">
-            {/* <StakingModal /> */}
+            <StakeModal />
             <PositionTable positionData={data} />
           </div>
         </div>

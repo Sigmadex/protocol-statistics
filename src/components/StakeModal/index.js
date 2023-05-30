@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export function StakingModal() {
+export function StakeModal() {
   const [tokenAmount, setTokenAmount] = useState(0);
   const [duration, setDuration] = useState(0);
   const [apy, setAPY] = useState(50);
