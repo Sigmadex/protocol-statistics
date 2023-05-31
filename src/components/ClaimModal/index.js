@@ -6,12 +6,12 @@ let testRewards = [
   {
     tokenName: "sSDEX",
     imageUrl: "/images/sigmadex-logo-square.svg",
-    amount: "N/A",
+    amount: "0",
   },
   {
     tokenName: "AVAX",
     imageUrl: "/images/avax-logo-square.svg",
-    amount: "N/A",
+    amount: "1000",
   },
 ];
 
@@ -65,10 +65,10 @@ export function ClaimModal() {
                       fontSize: 14,
                       fontWeight: 600,
                       justifyContent: "space-between",
-                      margin: "10px 0px 10px 0px",
+                      margin: "10px 0px -10px 0px",
                     }}
                   >
-                    <span>
+                    <span style={{ marginBottom: 20 }}>
                       <img
                         alt={reward.tokenName}
                         src={reward.imageUrl}

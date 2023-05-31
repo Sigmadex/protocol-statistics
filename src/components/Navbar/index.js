@@ -29,7 +29,7 @@ export const Navbar = () => {
             backgroundColor: "#fff",
             // height: 90,
             boxShadow: "0px 4px 30px rgba(166, 194, 215, 0.3)",
-            padding: 0,
+            padding: 25,
           }}
         >
           <div className="col-lg-2">

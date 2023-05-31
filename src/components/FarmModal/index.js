@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { CircularImage } from "../CircularImage";
 import { SigmadexButton } from "../SigmadexButton";
+import { SigmadexInput } from "../SigmadexInput";
 
 export function FarmModal() {
   const [token, setToken] = useState({
@@ -23,45 +24,88 @@ export function FarmModal() {
     console.log("Deposit button pressed");
   }
 
+  function thousandSeparator(n) {
+    n = String(n).split("");
+    let output = [];
+    for (let i = n.length - 1, j = 1; i >= 0; i--, j++) {
+      output.unshift(n[i]);
+      if (j % 3 === 0 && j < n.length) {
+        output.unshift(",");
+      }
+    }
+    return output.join("");
+  }
+
+  function handleAmount(e) {
+    setToken({
+      ...token,
+      amount: e.target.value,
+    });
+  }
+
+  function handleDuration(e) {
+    setToken({
+      ...token,
+      duration: e.target.value,
+    });
+  }
+
   return (
     <div
       className="card"
       style={{
         border: "none",
         boxShadow: "0px 4px 25px rgba(64, 76, 85, 0.15)",
-        borderRadius: 20,
-        padding: 25,
+        borderRadius: 10,
+        padding: 35,
         marginTop: 30,
       }}
     >
-      <h1 style={{ fontSize: 60 }}>Farm APY NFT</h1>
-      <div className="row">
+      <h1 style={{ fontSize: 60, marginBottom: 25, textAlign: "center" }}>
+        Farm APY NFT
+      </h1>
+      <div className="row" style={{ marginBottom: 25, fontWeight: "bold" }}>
         <div className="col-lg-12 d-flex justify-content-between">
           <span>
             <CircularImage
               url="/images/sigmadex-logo-square.svg"
               width={35}
               height={35}
+              style={{ marginRight: 15 }}
             />
             SDEX Balance:
           </span>
           <span>N/A</span>
         </div>
       </div>
-
-      <div className="row">
+      <div className="row" style={{ marginBottom: 20 }}>
         <div className="col-6">
-          Set Amount
-          <input type="number" className="form-control" placeholder="SDEX" />
+          <strong>Set Amount</strong>
+          <SigmadexInput
+            type="number"
+            placeholder="SDEX"
+            onChange={handleAmount}
+          />
         </div>
         <div className="col-6">
-          Set Stake Duration
-          <input type="number" className="form-control" placeholder="Days" />
+          <strong>Set Stake Duration</strong>
+          <SigmadexInput
+            type="number"
+            placeholder="Days"
+            onChange={handleDuration}
+          />
         </div>
       </div>
-
-      <div style={{ border: "1px solid #404C55", fontWeight: "bold" }}>
-        <div className="row">
+      <div
+        style={{
+          border: "1px solid rgba(64, 76, 85, 0.15)",
+          borderRadius: 10,
+          fontWeight: "bold",
+          padding: "25px 20px",
+          marginBottom: 20,
+        }}
+      >
+        <div className="row" style={{ marginBottom: 25 }}>
           <div className="d-flex justify-content-between">
             <span>APY</span>
             <span
@@ -78,7 +122,7 @@ export function FarmModal() {
             </span>
           </div>
         </div>
-        <div className="row">
+        <div className="row" style={{ marginTop: 25 }}>
           <div className="d-flex justify-content-between">
             <span>Estimated ROI After Maturity</span>
             <span
@@ -91,23 +135,27 @@ export function FarmModal() {
                     : "#E84142",
               }}
             >
-              {calculateROI(token)} {token.name}
+              {thousandSeparator(calculateROI(token))} {token.name}
             </span>
           </div>
         </div>
       </div>
-      <div className="row d-flex justify-content-end">
-        <SigmadexButton
-          buttonText="Approve"
-          func={() => approve()}
-          width={91}
-          inverse
-        />
-        <SigmadexButton
-          buttonText="Deposit"
-          func={() => deposit()}
-          width={87}
-        />
+      <div className="row">
+        <div className="col-12 d-flex justify-content-end">
+          <span style={{ marginRight: 10 }}>
+            <SigmadexButton
+              buttonText="Approve"
+              func={() => approve()}
+              width={91}
+              inverse
+            />
+          </span>
+          <SigmadexButton
+            buttonText="Deposit"
+            func={() => deposit()}
+            width={87}
+          />
+        </div>
       </div>
     </div>
   );
