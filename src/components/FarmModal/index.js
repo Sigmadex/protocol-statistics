@@ -1,76 +1,113 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { CircularImage } from "../CircularImage";
+import { SigmadexButton } from "../SigmadexButton";
 
 export function FarmModal() {
-  const [tokenAmount, setTokenAmount] = useState(0);
-  const [duration, setDuration] = useState(0);
-  const [apy, setAPY] = useState(50);
+  const [token, setToken] = useState({
+    name: "SDEX",
+    price: 0,
+    amount: 0,
+    duration: 0,
+    apy: 312,
+  });
 
-  function calculateAPY() {}
+  function calculateROI(token) {
+    return 12888;
+  }
+
+  function approve() {
+    console.log("Approve button pressed");
+  }
+
+  function deposit() {
+    console.log("Deposit button pressed");
+  }
 
   return (
-    <div className="col-lg-7" style={{ marginBottom: 148 }}>
-      <div
-        className="card"
-        style={{
-          border: "none",
-          boxShadow: "0px 4px 25px rgba(64, 76, 85, 0.15)",
-          borderRadius: 20,
-          marginTop: 40,
-          padding: "30px 20px",
-        }}
-      >
-        <h1 style={{ paddingBottom: 50 }}>Create New Staking Position</h1>
-        <div className="row" style={{ paddingBottom: 50 }}>
-          <div
-            className="col-sm-6"
-            style={{ display: "flex", flexDirection: "column" }}
-          >
-            <label>Set SDEX Amount</label>
-            {/* <input type='number' /> */}
-            <select
-              className="form-control"
-              style={{ fontSize: 16, padding: 20, borderRadius: 10 }}
-            >
-              <option>SDEX</option>
-            </select>
-          </div>
-          <div
-            className="col-sm-6"
-            style={{ display: "flex", flexDirection: "column" }}
-          >
-            <label>Set Stake Amount</label>
-            <input
-              className="form-control"
-              type="number"
-              style={{ fontSize: 16, padding: 20, borderRadius: 10 }}
+    <div
+      className="card"
+      style={{
+        border: "none",
+        boxShadow: "0px 4px 25px rgba(64, 76, 85, 0.15)",
+        borderRadius: 20,
+        padding: 25,
+        marginTop: 30,
+      }}
+    >
+      <h1 style={{ fontSize: 60 }}>Farm APY NFT</h1>
+      <div className="row">
+        <div className="col-lg-12 d-flex justify-content-between">
+          <span>
+            <CircularImage
+              url="/images/sigmadex-logo-square.svg"
+              width={35}
+              height={35}
             />
+            SDEX Balance:
+          </span>
+          <span>N/A</span>
+        </div>
+      </div>
+
+      <div className="row">
+        <div className="col-6">
+          Set Amount
+          <input type="number" className="form-control" placeholder="SDEX" />
+        </div>
+        <div className="col-6">
+          Set Stake Duration
+          <input type="number" className="form-control" placeholder="Days" />
+        </div>
+      </div>
+
+      <div style={{ border: "1px solid #404C55", fontWeight: "bold" }}>
+        <div className="row">
+          <div className="d-flex justify-content-between">
+            <span>APY</span>
+            <span
+              style={{
+                color:
+                  token.apy > 0
+                    ? "#51C64F"
+                    : parseInt(token.apy) === 0
+                    ? "#404C55"
+                    : "#E84142",
+              }}
+            >
+              {token.apy}%
+            </span>
           </div>
         </div>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            paddingBottom: 34,
-          }}
-        >
-          <label>Estimated APY Value After Maturity:</label>
-          <label
-            style={{ color: apy < 0 ? "red" : apy > 0 ? "#51C64F" : "#404C55" }}
-          >
-            0%
-          </label>
+        <div className="row">
+          <div className="d-flex justify-content-between">
+            <span>Estimated ROI After Maturity</span>
+            <span
+              style={{
+                color:
+                  calculateROI(token) > 0
+                    ? "#51C64F"
+                    : parseInt(calculateROI(token)) === 0
+                    ? "#404C55"
+                    : "#E84142",
+              }}
+            >
+              {calculateROI(token)} {token.name}
+            </span>
+          </div>
         </div>
-        <div style={{ textAlign: "right" }}>
-          <button className="btn-light" style={{ marginLeft: 10 }}>
-            Approve
-          </button>
-          <button className="btn-dark" style={{ marginLeft: 10 }}>
-            Deposit
-          </button>
-          <button className="btn-light" style={{ marginLeft: 10 }}>
-            Attach APY NFT
-          </button>
-        </div>
+      </div>
+      <div className="row d-flex justify-content-end">
+        <SigmadexButton
+          buttonText="Approve"
+          func={() => approve()}
+          width={91}
+          inverse
+        />
+        <SigmadexButton
+          buttonText="Deposit"
+          func={() => deposit()}
+          width={87}
+        />
       </div>
     </div>
   );

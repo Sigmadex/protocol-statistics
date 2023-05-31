@@ -1,10 +1,11 @@
-import { CircularImage } from "./CircularImage";
+import { FarmModal } from "./FarmModal";
 
 export function Test() {
   return (
-    <div>
-      <h1>Test</h1>
-      <CircularImage color="#50AF95" />
+    <div className="row">
+      <div className="col-lg-4 offset-lg-4">
+        <FarmModal />
+      </div>
     </div>
   );
 }

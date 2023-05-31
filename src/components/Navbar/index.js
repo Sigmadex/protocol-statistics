@@ -21,8 +21,8 @@ const dropdownStyles = {
 
 export const Navbar = () => {
   return (
-    <div class="container-fluid">
-      <div class="row">
+    <div className="container-fluid">
+      <div className="row">
         <nav
           className="navbar navbar-expand-lg navbar-light"
           style={{
