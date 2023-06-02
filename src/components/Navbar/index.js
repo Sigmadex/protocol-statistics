@@ -15,8 +15,14 @@ const Logo = () => {
 };
 
 const dropdownStyles = {
+  borderRadius: 20,
+  borderWidth: 0,
+  boxShadow: "0px 4px 25px rgba(64, 76, 85, 0.15)",
   width: 397,
   height: 134,
+  // position: "absolute",
+  // top: 0,
+  // left: 0,
 };
 
 export const Navbar = () => {
@@ -64,7 +70,7 @@ export const Navbar = () => {
                 >
                   <li>
                     <Link className="dropdown-item" to="/positions/earn">
-                      <span className="dropdown-item">
+                      <span style={{ color: "rgba(0, 0, 0, 0.6)" }}>
                         <img
                           alt="Earn APY"
                           src="/images/earn_icon.svg"
@@ -76,7 +82,7 @@ export const Navbar = () => {
                   </li>
                   <li>
                     <Link className="dropdown-item" to="/positions/mine">
-                      <span className="dropdown-item">
+                      <span style={{ color: "rgba(0, 0, 0, 0.6)" }}>
                         <img
                           alt="Mine APY"
                           src="/images/mine_icon.svg"

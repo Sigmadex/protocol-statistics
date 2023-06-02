@@ -7,13 +7,51 @@ const Search = ({ setSearched }) => {
       type="text"
       className="form-control"
       onChange={(e) => setSearched(e.target.value)}
-      placeholder="Search for token"
+      placeholder="&#128269;"
       style={{ marginBottom: 20 }}
     />
   );
 };
 
-const MostPopular = ({ tokens, selectToken }) => (
+const MostPopular = ({ tokens }) => (
+  <div
+    style={{
+      height: "45px",
+      width: "100%",
+      overflow: "auto",
+      whiteSpace: "nowrap",
+    }}
+  >
+    {tokens.map((token, i) => (
+      <div
+        style={{
+          height: "44px",
+          width: "83px",
+          display: "inline-block",
+          fontSize: 14,
+          fontWeight: "bold",
+          alignItems: "center",
+          backgroundColor: "#fff",
+          border: "1px solid rgba(64, 76, 85, 0.5)",
+          borderRadius: 10,
+          marginRight: 10,
+          paddingLeft: 10,
+          paddingRight: 10,
+          alpha: 0.5,
+        }}
+      >
+        <img
+          alt={`${token.name}`}
+          src={`/images/eth-logo.svg`}
+          style={{ width: 24, height: 24 }}
+        />
+        {token.asset_id}
+      </div>
+    ))}
+  </div>
+);
+
+const MostPopular2 = ({ tokens, selectToken }) => (
   <div
     style={{
       marginBottom: 20,
