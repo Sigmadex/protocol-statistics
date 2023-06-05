@@ -45,12 +45,12 @@ export const Navbar = () => {
             <div className="col-lg-9">
               <ul className="navbar-nav me-auto">
                 <li className="nav-item">
-                  <Link className="nav-link active" to="/">
+                  <Link className="nav-link" to="/">
                     Home
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link active" to="/wallet">
+                  <Link className="nav-link" to="/wallet">
                     Wallet
                   </Link>
                 </li>

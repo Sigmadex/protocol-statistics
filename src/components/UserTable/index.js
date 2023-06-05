@@ -39,12 +39,59 @@ let testUserData = [
   },
 ];
 
+const Input = ({
+  type = "text",
+  width = 100,
+  height = 54,
+  placeholder = "",
+}) => {
+  return (
+    <input
+      type={type}
+      style={{
+        width,
+        height,
+        borderRadius: 10,
+        border: "1px solid rgba(0, 0, 0, 0.23)",
+        color: "rgba(64, 76, 85, 0.6)",
+        fontSize: 14,
+        marginRight: 20,
+        padding: "0px 10px 0px 10px",
+      }}
+      placeholder={placeholder}
+    />
+  );
+};
+
+const adminButtonStyles = {
+  // width: 82,
+  height: 54,
+  border: "1px solid rgba(64, 76, 85, 0.5)",
+  backgroundColor: "#ffffff",
+  color: "404C55",
+  fontSize: 14,
+  borderRadius: 10,
+  padding: "0px 15px 0px 15px",
+};
+
+const AdminButton = ({ buttonText = "button", margin = "0px 0px 0px 0px" }) => {
+  return <button style={{ ...adminButtonStyles, margin }}>{buttonText}</button>;
+};
+
 export function UserTable(users) {
   const [userData, setUserData] = useState([]);
+  const [highlightedRow, setHighlightedRow] = useState(1);
 
   useEffect(() => {
     setUserData(testUserData);
   }, []);
+
+  function highlightRow(rowId) {
+    console.log("highlightRow", rowId);
+    if (!highlightedRow) setHighlightedRow(rowId);
+    if (highlightRow === rowId) setHighlightedRow(null);
+    setHighlightedRow(rowId);
+  }
 
   return (
     <div
@@ -57,34 +104,68 @@ export function UserTable(users) {
         marginTop: 30,
       }}
     >
-      <div className="row">
-        <select>
+      <div style={{ display: "inline", marginBottom: 20 }}>
+        {/* Options  */}
+        <select
+          style={{
+            width: 200,
+            height: 54,
+            borderRadius: 10,
+            border: "1px solid rgba(0, 0, 0, 0.23)",
+            color: "#404C55",
+            fontSize: 14,
+            padding: "0px 10px 0px 10px",
+            marginRight: 20,
+          }}
+        >
           <option>Less Than</option>
         </select>
-        <input type="text" />
-        <select>
+        <Input placeholder="1" />
+        <select
+          style={{
+            width: 170,
+            height: 54,
+            borderRadius: 10,
+            border: "1px solid rgba(0, 0, 0, 0.23)",
+            color: "#404C55",
+            fontSize: 14,
+            padding: "0px 10px 0px 10px",
+            marginRight: 20,
+          }}
+        >
           <option>AVAX Amount</option>
         </select>
-        <button>Export CSV</button>
+        <AdminButton buttonText="Search" />
+        <AdminButton buttonText="Export CSV" margin={"0px 0px 0px 20px"} />
       </div>
+
       <div className="table-responsive">
-        <table className="table" style={{ color: "#404C55" }}>
+        <table
+          className="table"
+          style={{ color: "#404C55", textAlign: "left" }}
+        >
           <thead>
-            <tr>
-              <th scope="col">TxID</th>
-              <th scope="col">Timestamp</th>
-              <th scope="col">User</th>
-              <th scope="col">AVAX Amt</th>
-              <th scope="col">Claim Amt</th>
-              <th scope="col">Ref Address</th>
-              <th scope="col">Ref Amt</th>
+            <tr style={{ fontSize: 14, fontWeight: "medium" }}>
+              <td>TxID</td>
+              <td>Timestamp</td>
+              <td>User</td>
+              <td>AVAX Amt</td>
+              <td>Claim Amt</td>
+              <td>Ref Address</td>
+              <td>Ref Amt</td>
             </tr>
           </thead>
-          <tbody>
+          <tbody style={{ fontSize: 14, fontWeight: "lighter" }}>
             {userData.length
               ? userData.map((user) => {
                   return (
-                    <tr>
+                    <tr
+                      onClick={() => highlightRow(user.txId)}
+                      style={{
+                        backgroundColor:
+                          highlightedRow === user.txId ? "#f7fafc" : "#ffffff",
+                      }}
+                    >
                       <td>{user.txId}</td>
                       <td>{user.timestamp}</td>
                       <td>{user.user}</td>

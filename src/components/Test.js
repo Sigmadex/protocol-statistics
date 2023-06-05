@@ -19,6 +19,7 @@ const MostPopular = ({ tokens }) =>
         paddingRight: 10,
         alpha: 0.5,
       }}
+      key={i}
     >
       <img
         alt={`${token.name}`}

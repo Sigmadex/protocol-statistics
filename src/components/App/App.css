@@ -104,3 +104,15 @@ label {
   /* display: flex;
   justify-content: space-between; */
 }
+
+/* style={{
+  borderLeft: "1px solid red",
+  borderRight: "1px solid red",
+}} */
+
+thead tr td {
+  font-size: 14;
+  font-weight: medium;
+  border-right: 2px solid #E0E0E0;
+  line-height: 14px;
+}
