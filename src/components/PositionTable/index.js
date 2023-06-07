@@ -1,3 +1,5 @@
+import { thousandSeparator } from "../utilities/Auth/formatting";
+
 function MineActions() {
   return (
     <tr style={{ backgroundColor: "#F2F6FA" }}>
@@ -59,7 +61,7 @@ export function PositionTable({ positionData }) {
                           : `${token.maturity} days remaining`}
                       </td>
                       <td>
-                        {token.unitsStaked} {token.tokenName}
+                        {thousandSeparator(token.unitsStaked)} {token.tokenName}
                       </td>
                       <td>{token.nftAPY}%</td>
                     </tr>
@@ -99,10 +101,10 @@ export function PositionTable({ positionData }) {
                       <td>{token.activeDuration} days</td>
                       <td>{token.maturity} days remaining</td>
                       <td>
-                        {token.unitsStaked} {token.tokenName}
+                        {thousandSeparator(token.unitsStaked)} {token.tokenName}
                       </td>
                       <td>
-                        {token.earned} {token.tokenName}
+                        {thousandSeparator(token.earned)} {token.tokenName}
                       </td>
                       <td>{token.apy}%</td>
                     </tr>

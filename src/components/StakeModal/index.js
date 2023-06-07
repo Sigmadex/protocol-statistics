@@ -2,6 +2,7 @@ import { useState } from "react";
 import { CircularImage } from "../CircularImage";
 import { SigmadexButton } from "../SigmadexButton";
 import { SigmadexInput } from "../SigmadexInput";
+import { thousandSeparator } from "../utilities/Auth/formatting";
 
 export function StakeModal() {
   const [token, setToken] = useState({
@@ -22,18 +23,6 @@ export function StakeModal() {
 
   function deposit() {
     console.log("Deposit button pressed");
-  }
-
-  function thousandSeparator(n) {
-    n = String(n).split("");
-    let output = [];
-    for (let i = n.length - 1, j = 1; i >= 0; i--, j++) {
-      output.unshift(n[i]);
-      if (j % 3 === 0 && j < n.length) {
-        output.unshift(",");
-      }
-    }
-    return output.join("");
   }
 
   function handleAmount(e) {
@@ -142,6 +131,9 @@ export function StakeModal() {
       </div>
       <div className="row">
         <div className="col-12 d-flex justify-content-end">
+          <span style={{ marginRight: 10 }}>
+            <SigmadexButton buttonText="Attach APY NFT" width={139} inverse />
+          </span>
           <span style={{ marginRight: 10 }}>
             <SigmadexButton
               buttonText="Approve"

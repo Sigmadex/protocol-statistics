@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-let testUserData = [
+let transactionData = [
   {
     txId: "2",
     timestamp: "1658158884",
@@ -83,7 +83,7 @@ export function UserTable(users) {
   const [highlightedRow, setHighlightedRow] = useState(1);
 
   useEffect(() => {
-    setUserData(testUserData);
+    setUserData(transactionData);
   }, []);
 
   function highlightRow(rowId) {
@@ -101,7 +101,6 @@ export function UserTable(users) {
         boxShadow: "0px 4px 25px rgba(64, 76, 85, 0.15)",
         borderRadius: 20,
         padding: 25,
-        marginTop: 30,
       }}
     >
       <div style={{ display: "inline", marginBottom: 20 }}>
@@ -165,6 +164,7 @@ export function UserTable(users) {
                         backgroundColor:
                           highlightedRow === user.txId ? "#f7fafc" : "#ffffff",
                       }}
+                      key={user.txId}
                     >
                       <td>{user.txId}</td>
                       <td>{user.timestamp}</td>
@@ -180,12 +180,23 @@ export function UserTable(users) {
           </tbody>
         </table>
       </div>
-      <div className="row">
-        Rows per page
-        <select>
+      <div
+        style={{
+          display: "inline",
+          fontSize: 12,
+          color: "#404C55",
+          marginBottom: 20,
+        }}
+      >
+        <span style={{ marginRight: 10, color: "rgba(64, 76, 85, 0.6)" }}>
+          Rows per page:
+        </span>
+        <select style={{ marginRight: 34 }}>
           <option>10</option>
         </select>
-        1-5 of 13 ◀️ ▶️
+        <span style={{ marginRight: 48 }}>1-5 of 13</span>
+        <span style={{ marginRight: 41 }}>◀️</span>
+        <span>▶️</span>
       </div>
     </div>
   );

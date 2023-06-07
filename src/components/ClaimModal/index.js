@@ -1,4 +1,4 @@
-import { useState, useEffect, useDebugValue } from "react";
+import { useState, useEffect } from "react";
 import { ConnectButton } from "../ConnectButton";
 import Modal from "../Modal.js";
 
