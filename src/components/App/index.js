@@ -11,7 +11,7 @@ import { Breadcrumbs } from "../Breadcrumbs";
 import { Admin } from "../Admin";
 import { Wallet } from "../Wallet";
 import "./App.css";
-import { SwapModal } from "../SwapModal";
+import { Swap } from "../Swap";
 import { NFT } from "../NFT";
 
 export function App() {
@@ -31,7 +31,7 @@ export function App() {
           <Route path="wallet" element={<Wallet />} />
           <Route path="nft/:nftAddress" element={<NFT />} />
           <Route path="test" element={<Test />} />
-          <Route path="swap" element={<SwapModal />} />
+          <Route path="swap" element={<Swap />} />
         </Routes>
         <Footer />
       </div>

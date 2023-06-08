@@ -8,11 +8,11 @@ const buttonStyles = {
   // webkitBoxSizing: 'border-box',
   width: "144px",
   height: "36px",
-  border: "1px solid #404C55",
+  border: "1px solid rgba(64, 76, 85, 0.5)",
   borderRadius: "10px",
   backgroundColor: "transparent",
   fontSize: "14px",
-  fontWeight: "600",
+  fontWeight: "500",
   cursor: "pointer",
   color: "#404C55",
 };
@@ -20,11 +20,11 @@ const buttonStyles = {
 const inverseButtonStyles = {
   width: "144px",
   height: "36px",
-  border: "1px solid #404C55",
+  border: "1px solid rgba(64, 76, 85, 0.5)",
   borderRadius: "10px",
   backgroundColor: "#404C55",
   fontSize: "14px",
-  fontWeight: "600",
+  fontWeight: "500",
   cursor: "pointer",
   color: "#fff",
 };
@@ -37,15 +37,15 @@ const navbarButtonStyles = {
   borderRadius: "10px",
   backgroundColor: "transparent",
   fontSize: "14px",
-  fontWeight: "600",
+  fontWeight: "500",
   cursor: "pointer",
   color: "#ffffff",
 };
 
-export function ConnectButton({ inverse }) {
+export function ConnectButton({ inverse, buttonText = "Connect Wallet" }) {
   return (
     <button style={inverse ? inverseButtonStyles : buttonStyles}>
-      Connect Wallet
+      {buttonText}
     </button>
   );
 }

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { CircularImage } from "../CircularImage";
 import { SigmadexButton } from "../SigmadexButton";
 import { SigmadexInput } from "../SigmadexInput";
-import { thousandSeparator } from "../utilities/Auth/formatting";
+import { thousandSeparator } from "../utilities/formatting";
 
 export function StakeModal() {
   const [token, setToken] = useState({

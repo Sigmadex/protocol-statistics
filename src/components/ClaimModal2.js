@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { ConnectButton } from "./ConnectButton";
-import { thousandSeparator } from "./utilities/Auth/formatting";
+import { thousandSeparator } from "./utilities/formatting";
 
 let testRewards = [
   {

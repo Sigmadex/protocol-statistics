@@ -2,8 +2,6 @@ const buttonStyles = {
   // boxSizing: 'border-box',
   // mozBoxSizing: 'border-box',
   // webkitBoxSizing: 'border-box',
-  width: "144px",
-  height: "36px",
   border: "1px solid #404C55",
   borderRadius: "10px",
   backgroundColor: "#404C55",
@@ -18,8 +16,6 @@ const inverseButtonStyles = {
   // boxSizing: 'border-box',
   // mozBoxSizing: 'border-box',
   // webkitBoxSizing: 'border-box',
-  width: "144px",
-  height: "36px",
   border: "1px solid #404C55",
   borderRadius: "10px",
   backgroundColor: "#ffffff",
@@ -34,6 +30,7 @@ export const SigmadexButton = ({
   buttonText = "Button",
   func,
   width,
+  height,
   inverse,
 }) => {
   return (
@@ -41,6 +38,7 @@ export const SigmadexButton = ({
       style={{
         ...(inverse ? inverseButtonStyles : buttonStyles),
         width: width ? width : 144,
+        height: height ? height : 36,
       }}
       onClick={func}
     >

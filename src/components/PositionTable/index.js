@@ -1,4 +1,4 @@
-import { thousandSeparator } from "../utilities/Auth/formatting";
+import { thousandSeparator } from "../utilities/formatting";
 
 function MineActions() {
   return (
