@@ -160,7 +160,7 @@ export function ClaimModal2() {
           </div>
         </div>
         <div style={{ textAlign: "center" }}>
-          <ConnectButton inverse />
+          <ConnectButton buttonText="Withdraw" inverse />
         </div>
       </div>
     </div>

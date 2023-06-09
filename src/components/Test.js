@@ -1,52 +1,64 @@
 import { useState, useEffect } from "react";
-const localCoinData = require("./local_coin_data.json");
-
-const MostPopular = ({ tokens }) =>
-  tokens.map((token, i) => (
-    <div
-      style={{
-        height: "44px",
-        width: "83px",
-        display: "inline-block",
-        fontSize: 14,
-        fontWeight: "bold",
-        alignItems: "center",
-        backgroundColor: "#fff",
-        border: "1px solid rgba(64, 76, 85, 0.5)",
-        borderRadius: 10,
-        marginRight: 10,
-        paddingLeft: 10,
-        paddingRight: 10,
-        alpha: 0.5,
-      }}
-      key={i}
-    >
-      <img
-        alt={`${token.name}`}
-        src={`/images/eth-logo.svg`}
-        style={{ width: 24, height: 24 }}
-      />
-      {token.asset_id}
-    </div>
-  ));
 
 export function Test() {
-  const [tokens, setTokens] = useState([]);
-
-  useEffect(() => {
-    setTokens(localCoinData);
-  }, []);
+  const [confirmingTransaction, setConfirmingTransaction] = useState(false);
+  const [transactionConfirmed, setTransactionConfirmed] = useState(true);
+  const [success, setSuccess] = useState(false);
 
   return (
-    <div
-      style={{
-        height: "45px",
-        width: "166px",
-        overflow: "auto",
-        whiteSpace: "nowrap",
-      }}
-    >
-      <MostPopular tokens={tokens} />
+    <div>
+      {confirmingTransaction ? (
+        <>
+          <h4 style={{ fontSize: 34, fontWeight: "bold" }}>
+            Confirming transaction...
+          </h4>
+          <p style={{ fontWeight: "bold", fontSize: 14 }}>Please wait</p>
+        </>
+      ) : null}
+      {/* {transactionConfirmed ? (
+        <>
+          <h4 style={{ fontSize: 34, fontWeight: 'bold' }}>Transaction Confirmed</h4>
+          <p style={{ fontWeight: "bold", fontSize: 14 }}>
+            Please wait for the claimbot to process your claim.
+          </p>
+          <img
+            src="/images/gift.png"
+            alt="gift"
+            // style={{ width: 197, height: 197 }}
+          />
+        </>
+      ) : null} */}
+      {transactionConfirmed && success ? (
+        <>
+          <img src="/images/checkmark.svg" style={{ width: 36, height: 27 }} />
+          <h4 style={{ fontSize: 34, fontWeight: "bold" }}>Success!</h4>
+          <p style={{ fontWeight: "bold", fontSize: 14 }}>
+            10,000 sSDEX has been added to your wallet.
+          </p>
+          Make sure to follow the Sigmadex socials below:
+          <p>
+            <img
+              src="/images/icon-twitter_1 1.svg"
+              style={{ width: 23, height: 18 }}
+            />
+            <img
+              src="/images/Telegram-icon.svg"
+              style={{ width: 22, height: 18 }}
+            />
+          </p>
+        </>
+      ) : (
+        <>
+          <img
+            src="/images/warning-icon.svg"
+            style={{ width: 36, height: 36 }}
+          />
+          <h4 style={{ fontSize: 34, fontWeight: "bold" }}>Oops!</h4>
+          <p style={{ fontWeight: "bold", fontSize: 14 }}>
+            Something went wrong. This wallet has already claimed sSDEX.
+          </p>
+        </>
+      )}
     </div>
   );
 }

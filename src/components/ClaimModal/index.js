@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { ConnectButton } from "../ConnectButton";
 import Modal from "../Modal.js";
+import { thousandSeparator } from "../utilities/formatting";
 
 let testRewards = [
   {
@@ -18,8 +19,14 @@ let testRewards = [
 export function ClaimModal() {
   const [rewards, setRewards] = useState([]);
   const [isEligible, setEligibility] = useState(false);
-  const [referrer, setReferrer] = useState("");
+  const [referrerAddress, setReferrerAddress] = useState(
+    // "0x0000000000000000000000000000000"
+    null
+  );
   const [displayModal, toggleModal] = useState(true);
+  const [displayEligibilityDiv, setDisplayEligibilityDiv] = useState(true);
+  const eligibilityMessage =
+    "You may be eligible to claim with a Referral Link.";
 
   useEffect(() => {
     setRewards(testRewards);
@@ -75,21 +82,66 @@ export function ClaimModal() {
                         style={{
                           height: 30,
                           borderRadius: "50%",
-                          marginRight: 5,
+                          marginRight: 15,
                         }}
                       />
                       {reward.tokenName} Balance:
                     </span>
-                    <span>{reward.amount}</span>
+                    <span>
+                      {Number(reward.amount)
+                        .toLocaleString("en-US", {
+                          style: "currency",
+                          currency: "USD",
+                        })
+                        .replace("$", "")}
+                    </span>
                   </div>
                 );
               })
             : null}
         </div>
-        <div style={{ textAlign: "center" }}>
-          <ConnectButton inverse />
+        {displayEligibilityDiv ? (
+          <div style={{ textAlign: "center" }}>
+            <p>This wallet is eligble to claim:</p>
+            <p style={{ marginTop: -10, fontWeight: "bold" }}>10,000 sSDEX</p>
+          </div>
+        ) : null}
+        <div
+          style={{
+            textAlign: "center",
+            borderTop: "1px solid rgba(64, 76, 85, 0.15)",
+            padding: "15px 0px 5px 0px",
+            marginBottom: 20,
+          }}
+        >
+          {referrerAddress ? (
+            <>
+              <p>Your referrer is</p>
+              <p style={{ marginTop: -10 }}>{referrerAddress}.</p>
+            </>
+          ) : (
+            <span>
+              <img
+                src="/images/info-icon.svg"
+                alt="info-icon"
+                style={{
+                  width: 20,
+                  height: 20,
+                  marginRight: 10,
+                }}
+              />{" "}
+              {eligibilityMessage}
+            </span>
+          )}
         </div>
-
+        <div style={{ textAlign: "center" }}>
+          <ConnectButton
+            buttonText={
+              displayEligibilityDiv ? "Claim Tokens" : "Connect Wallet"
+            }
+            inverse
+          />
+        </div>
         {/* <Modal displayModal={true} toggleModal={toggleModal} /> */}
       </div>
     </div>
