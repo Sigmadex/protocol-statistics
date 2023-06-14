@@ -42,9 +42,13 @@ const navbarButtonStyles = {
   color: "#ffffff",
 };
 
-export function ConnectButton({ inverse, buttonText = "Connect Wallet" }) {
+export function ConnectButton({
+  inverse,
+  buttonText = "Connect Wallet",
+  func = () => console.log("Generic function"),
+}) {
   return (
-    <button style={inverse ? inverseButtonStyles : buttonStyles}>
+    <button style={inverse ? inverseButtonStyles : buttonStyles} onClick={func}>
       {buttonText}
     </button>
   );

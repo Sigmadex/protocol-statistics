@@ -16,7 +16,7 @@ let testRewards = [
   },
 ];
 
-export function ClaimModal() {
+export function ClaimModal({ claimTokens }) {
   const [rewards, setRewards] = useState([]);
   const [isEligible, setEligibility] = useState(false);
   const [referrerAddress, setReferrerAddress] = useState(
@@ -140,6 +140,7 @@ export function ClaimModal() {
               displayEligibilityDiv ? "Claim Tokens" : "Connect Wallet"
             }
             inverse
+            func={claimTokens}
           />
         </div>
         {/* <Modal displayModal={true} toggleModal={toggleModal} /> */}

@@ -12,6 +12,7 @@ const modalStyles = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
+  zIndex: 1,
 };
 
 const modalContentStyles = {
@@ -24,29 +25,34 @@ const modalContentStyles = {
   textAlign: "center",
 };
 
-function Modal({ displayModal, handleToggleModal }) {
-  const [confirmingTransaction, setConfirmingTransaction] = useState(false);
-  const [transactionConfirmed, setTransactionConfirmed] = useState(true);
-  const [success, setSuccess] = useState(true);
-
+function Modal({
+  displayModal,
+  handleToggleModal,
+  txConfirmed,
+  tokensClaimed,
+}) {
   return (
     <div
       style={{
         ...modalStyles,
         visibility: displayModal ? "visible" : "hidden",
       }}
-      onClick={handleToggleModal}
+      onClick={
+        tokensClaimed !== null
+          ? handleToggleModal
+          : () =>
+              console.log("cannot click outside of modal until TX is resolved")
+      }
     >
       <div style={modalContentStyles}>
-        {confirmingTransaction ? (
+        {!txConfirmed ? (
           <>
             <h4 style={{ fontSize: 34, fontWeight: "bold" }}>
               Confirming transaction...
             </h4>
             <p style={{ fontWeight: "bold", fontSize: 16 }}>Please wait</p>
           </>
-        ) : null}
-        {/* {transactionConfirmed ? (
+        ) : tokensClaimed === null ? (
           <>
             <h4 style={{ fontSize: 34, fontWeight: "bold" }}>
               Transaction Confirmed
@@ -60,30 +66,7 @@ function Modal({ displayModal, handleToggleModal }) {
               style={{ width: 197, height: 197 }}
             />
           </>
-        ) : null} */}
-        {transactionConfirmed && success ? (
-          <>
-            <img
-              src="/images/checkmark.svg"
-              style={{ width: 36, height: 27 }}
-            />
-            <h4 style={{ fontSize: 34, fontWeight: "bold" }}>Success!</h4>
-            <p style={{ fontWeight: "bold", fontSize: 14 }}>
-              10,000 sSDEX has been added to your wallet.
-            </p>
-            Make sure to follow the Sigmadex socials below:
-            <p>
-              <img
-                src="/images/icon-twitter_1 1.svg"
-                style={{ width: 23, height: 18 }}
-              />
-              <img
-                src="/images/Telegram-icon.svg"
-                style={{ width: 22, height: 18 }}
-              />
-            </p>
-          </>
-        ) : (
+        ) : tokensClaimed ? (
           <>
             <img
               src="/images/warning-icon.svg"
@@ -93,14 +76,51 @@ function Modal({ displayModal, handleToggleModal }) {
             <p style={{ fontWeight: "bold", fontSize: 14 }}>
               Something went wrong. This wallet has already claimed sSDEX.
             </p>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <button className="sigmadex-button" onClick={handleToggleModal}>
+                Close
+              </button>
+            </div>
+          </>
+        ) : (
+          <>
+            <img
+              src="/images/checkmark.svg"
+              style={{ width: 36, height: 27 }}
+            />
+            <h4 style={{ fontSize: 34, fontWeight: "bold" }}>Success!</h4>
+            <p style={{ fontWeight: "bold", fontSize: 14 }}>
+              10,000 sSDEX has been added to your wallet.
+            </p>
+            <div
+              style={{
+                border: "1px solid rgba(64, 76, 85, 0.15)",
+                borderRadius: 10,
+                padding: "20px 0px 0px 0px",
+                marginBottom: 20,
+              }}
+            >
+              <p style={{ fontSize: 14 }}>
+                Make sure to follow the Sigmadex socials below:
+              </p>
+              <p>
+                <img
+                  src="/images/icon-twitter_1 1.svg"
+                  style={{ width: 23, height: 18 }}
+                />
+                <img
+                  src="/images/Telegram-icon.svg"
+                  style={{ width: 22, height: 18 }}
+                />
+              </p>
+            </div>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <button className="sigmadex-button" onClick={handleToggleModal}>
+                Close
+              </button>
+            </div>
           </>
         )}
-
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <button className="sigmadex-button" onClick={handleToggleModal}>
-            Close
-          </button>
-        </div>
       </div>
     </div>
   );

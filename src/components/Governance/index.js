@@ -22,21 +22,42 @@ const ClaimBackground = () => {
 };
 
 export function Governance() {
+  const [confirmingTx, setConfirmingTx] = useState(false);
+  const [txConfirmed, setTxConfirmed] = useState(false);
+  const [tokensClaimed, setTokensClaimed] = useState(null);
   const [displayModal, toggleModal] = useState(true);
 
   function handleToggleModal() {
     toggleModal(!displayModal);
   }
 
+  function claimTokens() {
+    setConfirmingTx(true);
+    setTimeout(() => {
+      setTxConfirmed(true);
+      setTimeout(() => {
+        checkIfTokensClaimed();
+      }, 2000);
+    }, 2000);
+  }
+
+  function checkIfTokensClaimed() {
+    setTokensClaimed(true);
+  }
+
   return (
     <div className="row" style={{ marginBottom: 135 }}>
-      <ClaimModal />
+      <ClaimModal claimTokens={claimTokens} />
       {/* <ClaimModal2 /> */}
       {/* <ClaimBackground /> */}
-      <Modal
-        displayModal={displayModal}
-        handleToggleModal={handleToggleModal}
-      />
+      {confirmingTx && (
+        <Modal
+          displayModal={displayModal}
+          handleToggleModal={handleToggleModal}
+          txConfirmed={txConfirmed}
+          tokensClaimed={tokensClaimed}
+        />
+      )}
       {/* <button onClick={handleToggleModal}>Toggle modal</button> */}
     </div>
   );
